@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 OLLAMA_API_URL = os.getenv("NEO4J_GENURL")
 
-def get_response_from_ollama_llama2(prompt):
+def get_response(prompt):
     headers = {
         'Content-Type': 'application/json',
     }
@@ -38,5 +38,4 @@ def get_response_from_ollama_llama2(prompt):
 if __name__ == "__main__":
     prompt = "Hi"
     print(f"Prompt: {prompt}\n")
-    response = get_response_from_ollama_llama2(prompt)
-    # print(f"\nFinal Response: {response}")
+    response = get_response(prompt)

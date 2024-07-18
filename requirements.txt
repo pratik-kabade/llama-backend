@@ -1,0 +1,14 @@
+neo4j
+python-dotenv
+PyPDF2
+sentence_transformers
+faiss-cpu
+streamlit
+langchain
+python-dotenv
+langchain_community
+chromadb
+pysqlite3-binary
+pypdf
+-U langchain-chroma
+-U langchain-openai
