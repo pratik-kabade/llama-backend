@@ -4,6 +4,7 @@ import pandas as pd
 from io import StringIO
 import os
 from dotenv import load_dotenv
+import json
 
 '''
 Loads CSV data into Neo4j: 
@@ -30,6 +31,12 @@ class Neo4jClient:
         # Read the CSV data into a DataFrame
         df = pd.read_csv(StringIO(response.text))
 
+        # Prepare a dictionary to store embeddings
+        embeddings = {
+            "questions": [],
+            "answers": []
+        }
+
         # Create nodes and relationships
         with self.driver.session() as session:
             for _, row in df.iterrows():
@@ -37,6 +44,16 @@ class Neo4jClient:
                 question_embedding = row['question_embedding']
                 answer_text = row['answer']
                 answer_embedding = row['answer_embedding']
+
+                # Add embeddings to the dictionary
+                embeddings["questions"].append({
+                    "text": question_text,
+                    "embedding": question_embedding
+                })
+                embeddings["answers"].append({
+                    "text": answer_text,
+                    "embedding": answer_embedding
+                })
 
                 # Merge Question node
                 session.execute_write(lambda tx: tx.run(
@@ -62,7 +79,12 @@ class Neo4jClient:
                     MERGE (q)-[:ANSWERED_BY]->(a)
                     """, question_text=question_text, answer_text=answer_text))
         
-        print('loaded csv into neo4j')
+        # # Save embeddings to a JSON file
+        # with open('./graph/embeddings.json', 'w') as json_file:
+        #     json.dump(embeddings, json_file, indent=4)
+        # print(Saved embeddings to 'embeddings.json')
+        
+        print('Loaded CSV into Neo4j')
 
     def get_answer(self, question_text):
         with self.driver.session() as session:
@@ -76,6 +98,19 @@ class Neo4jClient:
             answers = [record["answer"] for record in result]
         return answers
 
+    def print_all_data(self):
+        with self.driver.session() as session:
+            result = session.run(
+                """
+                MATCH (q:Question)-[:ANSWERED_BY]->(a:Answer)
+                RETURN q.text AS question, a.text AS answer
+                """
+            )
+            for record in result:
+                print(f"Question: {record['question']}\nAnswer: {record['answer']}\n")
+
+
+
 if __name__ == "__main__":
     # URL of the CSV file
     csv_url = 'https://data.neo4j.com/llm-vectors-unstructured/Quora-QuAD-1000-embeddings.csv'
@@ -84,7 +119,8 @@ if __name__ == "__main__":
     client = Neo4jClient()
     # client.load_csv_to_neo4j(csv_url)
 
-    # Example usage
+    # # Example usage
+    # client.print_all_data()
     question = 'What song has the lyrics "someone left the cake out in the rain"?'
     answers = client.get_answer(question)
     print(f"Question: \n{question}\n\nAnswers:")

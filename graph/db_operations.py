@@ -2,7 +2,6 @@ import os
 from dotenv import load_dotenv
 import requests
 from requests.auth import HTTPBasicAuth
-from neo4j import GraphDatabase
 
 # Load environment variables from .env file
 load_dotenv()

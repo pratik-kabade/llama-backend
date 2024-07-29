@@ -13,6 +13,5 @@ pypdf
 llama_index
 llama-index-llms-ollama
 llama-index-embeddings-huggingface
-
--U langchain-chroma
--U langchain-openai
+langchain-chroma
+langchain-openai
