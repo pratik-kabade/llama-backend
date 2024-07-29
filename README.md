@@ -1,5 +1,14 @@
 # LLAMA-Backend
 
+## Starting the environment
+
+```bash
+sudo service neo4j start
+sudo service neo4j enable
+sudo service neo4j status
+ollama serve
+```
+
 ## Installation
 
 ### Python Libraries
@@ -36,4 +45,18 @@ sudo nano /etc/neo4j/neo4j.conf
 
 ```bash
 netstat -tuln | grep 7474
+```
+
+## Change neo4j database location
+
+### Go to `neo4j.conf`
+```bash
+sudo nano /etc/neo4j/neo4j.conf
+```
+
+### change directory
+
+### Restart `neo4j`
+```bash
+sudo service neo4j restart
 ```

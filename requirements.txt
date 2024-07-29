@@ -10,5 +10,9 @@ langchain_community
 chromadb
 pysqlite3-binary
 pypdf
+llama_index
+llama-index-llms-ollama
+llama-index-embeddings-huggingface
+
 -U langchain-chroma
 -U langchain-openai
