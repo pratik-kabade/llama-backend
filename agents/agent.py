@@ -4,10 +4,25 @@ from llama_index.llms.ollama import Ollama
 from llama_index.core import Settings 
 import nest_asyncio 
 
-from tool_1 import tool1
-from tool_2 import tool2
+from tool import initialize_tool
 
 nest_asyncio.apply()
+
+persist_dir1 = "./agents/data/vectordb1"
+filepath1 = './agents/data/file_1.pdf'
+tool_name1 = "Ram"
+tool_description1 = "A RAG engine that tells about Ram"
+
+tool1 = initialize_tool(persist_dir1, filepath1, tool_name1, tool_description1)
+
+persist_dir2 = "./agents/data/vectordb2"
+filepath2 = './agents/data/file_2.pdf'
+tool_name2 = "Shyam"
+tool_description2 = "A RAG engine that tells about Shyam"
+
+tool2 = initialize_tool(persist_dir2, filepath2, tool_name2, tool_description2)
+
+
 
 llm = Ollama(model="llama2", request_timeout=120.0, temperature=0)
 Settings.llm = llm

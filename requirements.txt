@@ -1,4 +1,5 @@
 neo4j
+flask
 python-dotenv
 PyPDF2
 sentence_transformers

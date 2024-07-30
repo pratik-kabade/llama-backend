@@ -163,7 +163,15 @@ class Neo4jCRUD:
             """
             result = session.run(query, object_name=object_name)
             records = [record["p"] for record in result]
-            return records[0][property_type] if records else f"No properties found for '{object_name}'."
+            if not records:
+                return f"No properties found for '{object_name}'."
+            
+            property_values = [record[property_type] for record in records if property_type in record]
+            if not property_values:
+                return f"No properties of type '{property_type}' found for '{object_name}'."
+            
+            return property_values
+
 
     def find_all_relationships(self, object_name):
         with self.driver.session() as session:
