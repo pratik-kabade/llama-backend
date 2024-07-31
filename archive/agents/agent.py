@@ -8,15 +8,15 @@ from tool import initialize_tool
 
 nest_asyncio.apply()
 
-persist_dir1 = "./agents/data/vectordb1"
-filepath1 = './agents/data/file_1.pdf'
+persist_dir1 = "./data/vectordb1"
+filepath1 = './data/file_1.pdf'
 tool_name1 = "Ram"
 tool_description1 = "A RAG engine that tells about Ram"
 
 tool1 = initialize_tool(persist_dir1, filepath1, tool_name1, tool_description1)
 
-persist_dir2 = "./agents/data/vectordb2"
-filepath2 = './agents/data/file_2.pdf'
+persist_dir2 = "./data/vectordb2"
+filepath2 = './data/file_2.pdf'
 tool_name2 = "Shyam"
 tool_description2 = "A RAG engine that tells about Shyam"
 

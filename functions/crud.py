@@ -245,7 +245,7 @@ if __name__ == "__main__":
     # print(db.find_by_relationship("TTID2", "HAS_TT2"))
 
     # db.create_object("NANP")
-    # db.build_from_csv('./graph/bin/Alarms.csv')
+    # db.build_from_csv('./data/Alarms.csv')
     # print(db.find_all_properties('HETN'))
     # print(db.find_by_property('ADIQ', 'Northings'))
     # print(db.find_by_property('HETN', 'FirstOccurrence'))
