@@ -14,5 +14,5 @@
     - **read** data
     - **delete** data from selected database
 
-## ``llama_service.py`
+## `llama_service.py`
 - **hosts api** for connecting with `ollama-llama2`
