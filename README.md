@@ -9,4 +9,4 @@ sudo service neo4j status
 ollama serve
 ```
 
-- To get started visit `./archive` 
+### For initial setup visit [`./archive`](./archive/README.md) 
