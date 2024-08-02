@@ -20,7 +20,7 @@ logging.getLogger().addHandler(logging.StreamHandler(stream=sys.stdout))
 
 Settings.embed_model = resolve_embed_model("local:BAAI/bge-small-en-v1.5")
 
-Settings.llm = Ollama(model="llama2", request_timeout=30.0, temperature=0)
+Settings.llm = Ollama(model="llama2", request_timeout=60.0, temperature=0)
 
 documents = LlamaParse(result_type="text").load_data(file_path)
 

@@ -1,5 +1,6 @@
 .env
 db
+data/vectordb
 
 __pycache__
 vectordb1
