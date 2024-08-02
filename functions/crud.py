@@ -2,6 +2,7 @@ from neo4j import GraphDatabase
 from dotenv import load_dotenv
 import os
 import pandas as pd
+from sentence_transformers import SentenceTransformer
 
 # OBJECT is the name of database
 
@@ -14,6 +15,7 @@ class Neo4jCRUD:
         self.password = os.getenv("NEO4J_PASSWORD")
         self.uri = os.getenv("NEO4J_URI")
         self.driver = GraphDatabase.driver(self.uri, auth=(self.username, self.password))
+        self.model = SentenceTransformer('all-MiniLM-L6-v2')
         
     def __str__(self):
         # Read all objects and return their details as a string
@@ -120,6 +122,30 @@ class Neo4jCRUD:
 
 
 
+    def embeddings_from_csv(self, file):
+        data = pd.read_csv(file)
+        header = data.columns.to_numpy()
+        for row in range(len(data)):
+            first_row_dict = data.iloc[row].to_dict()
+            first_element = first_row_dict[header[0]]
+            self.create_object(first_element)
+
+            for col in range(len(header)):
+                col_name = header[col]
+                value = first_row_dict[header[col]]
+                
+                # Generate and store embeddings
+                embedding = self.model.encode(str(value)).tolist()
+                
+                with self.driver.session() as session:
+                    query = f"""
+                    MATCH (p:OBJECT {{name: $name}})
+                    SET p.{col_name} = $value, p.{col_name}_embedding = $embedding
+                    RETURN p
+                    """
+                    result = session.run(query, name=first_row_dict[header[0]], value=value, embedding=embedding)
+                    summary = result.consume()
+
 
     # Filters
     def find_object(self, name):
@@ -198,27 +224,6 @@ class Neo4jCRUD:
 if __name__ == "__main__":
     db = Neo4jCRUD()
 
-    # Create
-    # db.create_object("Alice")
-    # db.create_object("Bob")
-    # db.create_object("Charlie")
-
-    # # Update
-    # db.update_object("Alice", 42)
-
-    # # Create a relationship
-    # db.create_relationship("Alice", "Bob", 's')
-
-    # # Delete
-    # db.delete_object("Charlie")
-    # db.delete_object("Alice")
-    # db.delete_object("Bob")
-
-    # print('\n\n\n')
-
-
-
-
     # db.create_object("DeviceID1")
     # db.create_object("AlarmID1")
     # db.create_object("AlarmID2")
@@ -235,8 +240,6 @@ if __name__ == "__main__":
     # db.create_relationship("DeviceID1", "TTID2", "HAS_TT")
     # db.create_relationship("DeviceID1", "TTID2", "HAS_TT2")
 
-
-
     # db.update_object("AlarmID3", 'Closed')
 
     print(db)
@@ -244,8 +247,8 @@ if __name__ == "__main__":
     # print(db.find_object('DeviceID1'))
     # print(db.find_by_relationship("TTID2", "HAS_TT2"))
 
-    # db.create_object("NANP")
     # db.build_from_csv('./data/Alarms.csv')
+    # db.embeddings_from_csv('./data/Alarms.csv')
     # print(db.find_all_properties('HETN'))
     # print(db.find_by_property('ADIQ', 'Northings'))
     # print(db.find_by_property('HETN', 'FirstOccurrence'))
