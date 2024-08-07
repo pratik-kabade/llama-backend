@@ -10,7 +10,7 @@ import numpy as np
 load_dotenv()
 
 # Ollama API URL
-OLLAMA_API_URL = os.getenv("NEO4J_GENURL")
+OLLAMA_API_URL = os.getenv("LLM_GENERATE_URL")
 
 def extract_text_from_pdf(pdf_path):
     reader = PdfReader(pdf_path)

@@ -17,3 +17,4 @@ llama-index-embeddings-huggingface
 langchain-chroma
 langchain-openai
 llama_index.llms.ollama
+pymongo

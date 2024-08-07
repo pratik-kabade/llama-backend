@@ -15,7 +15,7 @@
 # password = os.getenv("NEO4J_PASSWORD")
 
 # # Ollama API URL
-# OLLAMA_API_URL = os.getenv("NEO4J_GENURL")
+# OLLAMA_API_URL = os.getenv("LLM_GENERATE_URL")
 
 # class VectorEmbeddingManager:
 #     def __init__(self, neo4j_uri, neo4j_user, neo4j_password, db_name):
@@ -152,7 +152,7 @@ username = "neo4j"
 password = os.getenv("NEO4J_PASSWORD")
 
 # Ollama API URL
-OLLAMA_API_URL = os.getenv("NEO4J_GENURL")
+OLLAMA_API_URL = os.getenv("LLM_GENERATE_URL")
 
 class VectorEmbeddingManager:
     def __init__(self, neo4j_uri, neo4j_user, neo4j_password):

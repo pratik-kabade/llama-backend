@@ -11,7 +11,7 @@ load_dotenv()
 app = Flask(__name__)
 
 # Fetch Ollama API URL from environment variables
-OLLAMA_API_URL = os.getenv("NEO4J_GENURL")
+OLLAMA_API_URL = os.getenv("LLM_GENERATE_URL")
 
 def stream_response(prompt):
     headers = {

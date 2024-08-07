@@ -4,7 +4,7 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
-OLLAMA_API_URL = os.getenv("NEO4J_GENURL")
+OLLAMA_API_URL = os.getenv("LLM_GENERATE_URL")
 
 def get_response(prompt):
     headers = {
