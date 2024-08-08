@@ -1,5 +1,5 @@
-from crud import Neo4jCRUD
+from crud import Neo4jManager
 
-db = Neo4jCRUD()
+db = Neo4jManager()
 print(db.find_by_property('ADIQ', 'Northings_embedding'))
 db.close()

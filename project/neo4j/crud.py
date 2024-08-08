@@ -7,7 +7,7 @@ from llama_index.embeddings.ollama import OllamaEmbedding
 
 # OBJECT is the name of database
 
-class Neo4jCRUD:
+class Neo4jManager:
     def __init__(self):
         # Load environment variables from .env file
         load_dotenv()
@@ -301,7 +301,7 @@ class Neo4jCRUD:
 
 # Example usage
 if __name__ == "__main__":
-    db = Neo4jCRUD()
+    db = Neo4jManager()
 
     # db.create_object("DeviceID1")
     # db.create_object("AlarmID1")

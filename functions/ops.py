@@ -1,5 +1,5 @@
 import llm_response as llm
-from crud import Neo4jCRUD 
+from crud import Neo4jManager 
 from db_operations import delete_all_data
 
 print('Clearing data..')
@@ -7,7 +7,7 @@ delete_all_data('neo4j')
 print('\n'*5)
 
 
-db = Neo4jCRUD()
+db = Neo4jManager()
 # Load data
 db.embeddings_from_csv('./data/Alarms.csv', True)
 
