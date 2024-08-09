@@ -138,6 +138,6 @@ def delete_all_data(database_name):
 
 # Example usage
 # get_databases()
-# create_database('new') #BUG
+# create_database('new') #bug
 # get_database_data("neo4j")
 # delete_all_data("neo4j")

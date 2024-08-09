@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 import os
 import pandas as pd
 from sentence_transformers import SentenceTransformer
+from llama_index.embeddings.ollama import OllamaEmbedding
 
 # OBJECT is the name of database
 
@@ -14,8 +15,18 @@ class Neo4jCRUD:
         self.username = os.getenv("NEO4J_USER")
         self.password = os.getenv("NEO4J_PASSWORD")
         self.uri = os.getenv("NEO4J_URI")
+        self.llm_model = os.getenv("LLM_MODEL")
+        
         self.driver = GraphDatabase.driver(self.uri, auth=(self.username, self.password))
-        self.model = SentenceTransformer('all-MiniLM-L6-v2')
+        self.embed_model = OllamaEmbedding(
+            model_name=self.llm_model,
+            base_url="http://localhost:11434",
+        )
+        self.relation_used = 'CONTAINS'
+
+    def algo(self, prop, obj_name, value):        
+        algo = prop + ' of ' + obj_name + ' is ' + value
+        return algo        
         
     def __str__(self):
         # Read all objects and return their details as a string
@@ -54,7 +65,7 @@ class Neo4jCRUD:
                 name=name
             )
             count = result.single()["count"]
-            print(f"Created {count} node.")
+            # print(f"Created {count} node.")
 
     def update_object(self, name, prop):
         with self.driver.session() as session:
@@ -68,7 +79,7 @@ class Neo4jCRUD:
                 prop=prop
             )
             summary = result.consume()
-            print(f"Query counters: {summary.counters}.")
+            # print(f"Query counters: {summary.counters}.")
 
     def create_relationship(self, name, object2, relationship):
         with self.driver.session() as session:
@@ -80,7 +91,7 @@ class Neo4jCRUD:
             """
             result = session.run(query, name=name, object2=object2)
             summary = result.consume()
-            print(f"Query counters: {summary.counters}.")
+            # print(f"Query counters: {summary.counters}.")
 
     def delete_object(self, name):
         with self.driver.session() as session:
@@ -93,7 +104,7 @@ class Neo4jCRUD:
                 name=name
             )
             summary = result.consume()
-            print(f"Query counters: {summary.counters}.")
+            # print(f"Query counters: {summary.counters}.")
 
 
     def build_from_csv(self, file):
@@ -121,30 +132,98 @@ class Neo4jCRUD:
                     # print(f"Query counters: {summary.counters}.")
 
 
+    def embeddings_from_csv(self, file, show_progress=False):        
+        lead_object = file.split('/')[-1]
+        # print(lead_object)
+        self.create_object(lead_object)
 
-    def embeddings_from_csv(self, file):
         data = pd.read_csv(file)
         header = data.columns.to_numpy()
-        for row in range(len(data)):
-            first_row_dict = data.iloc[row].to_dict()
-            first_element = first_row_dict[header[0]]
-            self.create_object(first_element)
 
+        progress = len(data)
+        for row in range(len(data)):
+            if show_progress: print(str(progress) + ' item(s) left..')
+            progress -= 1
+
+            first_row_dict = data.iloc[row].to_dict()
+            first_element = str(first_row_dict[header[0]])
+            self.create_object(first_element)
+            self.create_relationship(lead_object, first_element, self.relation_used)
+
+            sentences = ''
             for col in range(len(header)):
-                col_name = header[col]
-                value = first_row_dict[header[col]]
-                
-                # Generate and store embeddings
-                embedding = self.model.encode(str(value)).tolist()
-                
+                col_name = str(header[col])
+                value = str(first_row_dict[header[col]])
+
+                sentence = self.algo(prop=col_name, obj_name=first_element, value=value) 
+                # print(sentence)
+                sentences += sentence + ', '
+
                 with self.driver.session() as session:
                     query = f"""
                     MATCH (p:OBJECT {{name: $name}})
-                    SET p.{col_name} = $value, p.{col_name}_embedding = $embedding
+                    SET p.{col_name} = $value
                     RETURN p
                     """
-                    result = session.run(query, name=first_row_dict[header[0]], value=value, embedding=embedding)
+                    result = session.run(query, name=first_element, value=value)
+                
                     summary = result.consume()
+
+                    # print(f"Query counters: {summary.counters}.")
+
+            key_embedding = self.embed_model.get_query_embedding(sentences)
+            s = str(sentences)
+            with self.driver.session() as session:
+                # query = f"""
+                # MATCH (p:OBJECT {{name: $name}})
+                # SET p.embedding = {key_embedding}
+                # SET p.sentences = {s}
+                # RETURN p
+                # """
+                # result = session.run(query, name=first_element)
+                query = """
+                MATCH (p:OBJECT {name: $name})
+                SET p.sentences = $sentences
+                RETURN p
+                """
+                result = session.run(query, name=first_element, sentences=s)
+
+                summary = result.consume()
+
+                # print(f"Query counters: {summary.counters}.")
+        print()
+
+    def list_all_nodes(self, object_name):
+        nodes = []
+        with self.driver.session() as session:
+            query = """
+            MATCH (p:OBJECT {name: $object_name})-[r]->(object2:OBJECT)
+            RETURN type(r) AS relationship_type, object2.name AS object2
+            """
+            result = session.run(query, object_name=object_name)
+            records = [f"{record['object2']}" for record in result]
+            nodes = records
+
+        return nodes if len(nodes)!=0 else f"No relationships found for '{object_name}'."
+
+    def return_prompt_specific_data(self, object_name, prompt):
+        item_list = self.list_all_nodes(object_name)
+        lowered_item_list = [i.lower() for i in item_list]
+        lowered = prompt.lower().split(' ')
+        item = ''
+
+        for i in lowered:
+            if i in lowered_item_list:
+                item = i
+        for i in range(len(item_list)):
+            if lowered_item_list[i] == item:
+                item = item_list[i]
+
+        # all_properties = self.find_by_property(object_name=item, property_type='sentences')
+        all_properties = self.find_all_properties(item)
+
+        return all_properties if item != '' else False
+
 
 
     # Filters
@@ -242,16 +321,24 @@ if __name__ == "__main__":
 
     # db.update_object("AlarmID3", 'Closed')
 
-    print(db)
+    # print(db)
     # print(db.show_relationships())
     # print(db.find_object('DeviceID1'))
     # print(db.find_by_relationship("TTID2", "HAS_TT2"))
 
     # db.build_from_csv('./data/Alarms.csv')
+    # print(db)
     # db.embeddings_from_csv('./data/Alarms.csv')
     # print(db.find_all_properties('HETN'))
+    # print(db.find_all_relationships('HETN'))
+    # print(db.list_all_nodes('Alarms.csv'))
     # print(db.find_by_property('ADIQ', 'Northings'))
     # print(db.find_by_property('HETN', 'FirstOccurrence'))
+
+    prompt = 'what is NANP ?'
+
+    print(db.return_prompt_specific_data('Alarms.csv',prompt))
+
 
     # Close the connection
     db.close()
