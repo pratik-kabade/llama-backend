@@ -1,8 +1,7 @@
-from crud import Neo4jManager 
+from neo4j_manager import Neo4jManager 
 from db_operations import delete_all_data
-from rag import rag_model
+from llm_rag import rag_model
 
-# neo4j_manager
 print('Clearing data..')
 delete_all_data('neo4j')
 print('\n'*5)
