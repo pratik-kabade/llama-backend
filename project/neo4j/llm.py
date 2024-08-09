@@ -1,10 +1,8 @@
 import os
-import pandas as pd
-from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, Settings, load_index_from_storage, StorageContext
+from llama_index.core import VectorStoreIndex, Settings, load_index_from_storage, StorageContext
 from llama_index.core.embeddings import resolve_embed_model
 from llama_index.llms.ollama import Ollama
 from llama_parse import LlamaParse
-from neo4j import GraphDatabase
 
 os.environ["LLAMA_CLOUD_API_KEY"] = "llx-TuxnaMbo4c7TYeo9EjxpZX4oPMxEDAsX4a8AuxogvurFbklO"
 
@@ -30,3 +28,12 @@ def rag_model(file_name, prompt):
     query_engine = index.as_query_engine()
     response = query_engine.query(prompt)
     print(response)
+
+
+def get_response(model, prompt):
+    llm = Ollama(model = model, request_timeout=120.0)
+    print('>>>>> Getting response..')
+    response = llm.stream_complete(prompt)
+    for r in response:
+        print(r.delta, end="")
+    print()

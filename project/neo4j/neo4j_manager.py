@@ -3,6 +3,8 @@ from dotenv import load_dotenv
 import os
 import pandas as pd
 from llama_index.embeddings.ollama import OllamaEmbedding
+import requests
+from requests.auth import HTTPBasicAuth
 
 # OBJECT is the name of database
 
@@ -14,14 +16,21 @@ class Neo4jManager:
         self.username = os.getenv("NEO4J_USER")
         self.password = os.getenv("NEO4J_PASSWORD")
         self.uri = os.getenv("NEO4J_URI")
+        self.base_uri = os.getenv("NEO4J_BASEURL")
         self.llm_model = os.getenv("LLM_MODEL")
-        
+        # self.username = 'neo4j'
+        # self.password = 'genesis'
+        # self.uri = 'bolt://localhost:7687'
+        # self.base_uri = 'http://localhost:7474'
+        # self.llm_model = 'llama3'
+
         self.driver = GraphDatabase.driver(self.uri, auth=(self.username, self.password))
         self.embed_model = OllamaEmbedding(
             model_name=self.llm_model,
             base_url="http://localhost:11434",
         )
         self.relation_used = 'CONTAINS'
+
 
     def algo(self, prop, obj_name, value):        
         algo = prop + ' of ' + obj_name + ' is ' + value
@@ -105,7 +114,6 @@ class Neo4jManager:
             summary = result.consume()
             # print(f"Query counters: {summary.counters}.")
 
-
     def build_from_csv(self, file):
         data = pd.read_csv(file)
         header = data.columns.to_numpy()
@@ -129,7 +137,6 @@ class Neo4jManager:
                     summary = result.consume()
 
                     # print(f"Query counters: {summary.counters}.")
-
 
     def embeddings_from_csv(self, file, show_progress=False):        
         lead_object = file.split('/')[-1]
@@ -220,7 +227,6 @@ class Neo4jManager:
             print('NOT found!')
             return self.return_all_data(object_name=object_name)
 
-
     def return_all_data(self, object_name):
         def list_all_nodes(object_name):
             nodes = []
@@ -242,6 +248,108 @@ class Neo4jManager:
             all_properties.append(self.find_by_property(object_name=item, property_type='sentences'))
 
         return all_properties
+
+
+
+    # DB_Ops
+    def db_op_create_database(self, database_name): #BUG
+        url = f"{self.base_uri}/db/system/tx/commit"
+        headers = {
+            "Content-Type": "application/json"
+        }
+        query = {
+            "statements": [
+                {
+                    "statement": f"CREATE DATABASE {database_name}",
+                    "resultDataContents": []
+                }
+            ]
+        }
+        response = requests.post(url, json=query, headers=headers, auth=HTTPBasicAuth(self.username, self.password))
+        if response.status_code == 200:
+            print(f"Database '{database_name}' created successfully.")
+        else:
+            print("Failed to create database:", response.status_code, response.text)
+
+    def db_op_get_databases(self):
+        url = f"{self.base_uri}/db/system/tx/commit"
+        headers = {
+            "Content-Type": "application/json"
+        }
+        query = {
+            "statements": [
+                {
+                    "statement": "SHOW DATABASES",
+                    "resultDataContents": ["row"]
+                }
+            ]
+        }
+        response = requests.post(url, json=query, headers=headers, auth=HTTPBasicAuth(self.username, self.password))
+        if response.status_code == 200:
+            result = response.json()
+            # print("Raw response:", result)
+            if 'results' in result and result['results']:
+                for record in result['results'][0]['data']:
+                    # Safely access database details
+                    row = record['row']
+                    db_name = row[0] if len(row) > 0 else "N/A"
+                    db_status = row[1] if len(row) > 1 else "N/A"
+                    db_size = row[2] if len(row) > 2 else "N/A"  # Size may not be available in all cases
+                    
+                    print(f"\nDatabase Name: {db_name}")
+                    print(f"Status: {db_status}")
+                    print(f"Size: {db_size}")
+            else:
+                print("No databases found or query did not return results.")
+        else:
+            print("Failed to retrieve databases:", response.status_code, response.text)
+
+    def db_op_get_database_data(self, database_name):
+        url = f"{self.base_uri}/db/{database_name}/tx/commit"
+        headers = {
+            "Content-Type": "application/json"
+        }
+        query = {
+            "statements": [
+                {
+                    "statement": "MATCH (n) RETURN n LIMIT 25",
+                    "resultDataContents": ["row", "graph"]
+                }
+            ]
+        }
+        response = requests.post(url, json=query, headers=headers, auth=HTTPBasicAuth(self.username, self.password))
+        if response.status_code == 200:
+            result = response.json()
+            # print("Raw response:", result)
+            if 'results' in result and result['results']:
+                for record in result['results'][0]['data']:
+                    # Safely access node details
+                    row = record['row']
+                    print(f"Node: {row}")
+                    print("-" * 40)
+            else:
+                print("No data found or query did not return results.")
+        else:
+            print("Failed to retrieve data:", response.status_code, response.text)
+
+    def delete_all_data(self, database_name):
+        url = f"{self.base_uri}/db/{database_name}/tx/commit"
+        headers = {
+            "Content-Type": "application/json"
+        }
+        query = {
+            "statements": [
+                {
+                    "statement": "MATCH (n) DETACH DELETE n",
+                    "resultDataContents": []
+                }
+            ]
+        }
+        response = requests.post(url, json=query, headers=headers, auth=HTTPBasicAuth(self.username, self.password))
+        if response.status_code == 200:
+            print(f"All data from '{database_name}' deleted successfully.")
+        else:
+            print("Failed to delete data:", response.status_code, response.text)
 
 
 
@@ -295,7 +403,6 @@ class Neo4jManager:
                 return f"No properties of type '{property_type}' found for '{object_name}'."
             
             return property_values
-
 
     def find_all_relationships(self, object_name):
         with self.driver.session() as session:

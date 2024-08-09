@@ -1,3 +1,5 @@
-from db_operations import get_database_data
+from neo4j_manager import Neo4jManager
 
-get_database_data('neo4j')
+db = Neo4jManager()
+db.get_database_data('neo4j')
+db.close()

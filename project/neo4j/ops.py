@@ -1,13 +1,13 @@
 from neo4j_manager import Neo4jManager 
-from db_operations import delete_all_data
-from llm_rag import rag_model
+from llm import rag_model
+
+db = Neo4jManager()
 
 print('Clearing data..')
-delete_all_data('neo4j')
+db.delete_all_data('neo4j')
 print('\n'*5)
 
 
-db = Neo4jManager()
 # Load data
 db.embeddings_from_csv('./data/Alarms.csv', True)
 
@@ -28,4 +28,4 @@ rag_model(file_name, prompt)
 
 # Clear data if required
 print('\n'*4 + 'Clearing data..')
-delete_all_data('neo4j')
+db.delete_all_data('neo4j')

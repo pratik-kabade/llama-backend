@@ -1,3 +1,5 @@
-from db_operations import delete_all_data
+from neo4j_manager import Neo4jManager
 
-delete_all_data('neo4j')
+db = Neo4jManager()
+db.delete_all_data('neo4j')
+db.close()
