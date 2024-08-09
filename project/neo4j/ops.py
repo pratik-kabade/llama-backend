@@ -1,7 +1,8 @@
-import llm_response as llm
 from crud import Neo4jManager 
 from db_operations import delete_all_data
+from rag import rag_model
 
+# neo4j_manager
 print('Clearing data..')
 delete_all_data('neo4j')
 print('\n'*5)
@@ -12,15 +13,19 @@ db = Neo4jManager()
 db.embeddings_from_csv('./data/Alarms.csv', True)
 
 # Get relevant data from the prompt
-prompt = 'what is firstoccurence of NANP ?'
-relevant_texts = str(db.return_prompt_specific_data('Alarms.csv',prompt))
+# prompt = 'what is firstoccurence of NANP ?'
+prompt = 'who have Mar 10, 2024, 8:10:20 AM as lastoccurence?'
+relevant_texts = str(db.return_prompt_specific_data('Alarms.csv', prompt))
+# all_texts = str(db.return_all_data('Alarms.csv'))
 
-final_prompt = 'form this data ' + relevant_texts + ' answer this ' + prompt
+file_path = './data/'
+file_name = 'DataToParse.txt'
+with open(file_path+file_name, 'a') as file:
+    file.write(relevant_texts)
+print('Saved text file, proceeding ahead with RAG')
 
-# print(final_prompt)
+rag_model(file_name, prompt)
 
-# Get response from llm
-llm.get_response("llama2", final_prompt)
 
 # Clear data if required
 print('\n'*4 + 'Clearing data..')

@@ -2,7 +2,6 @@ from neo4j import GraphDatabase
 from dotenv import load_dotenv
 import os
 import pandas as pd
-from sentence_transformers import SentenceTransformer
 from llama_index.embeddings.ollama import OllamaEmbedding
 
 # OBJECT is the name of database
@@ -142,9 +141,6 @@ class Neo4jManager:
 
         progress = len(data)
         for row in range(len(data)):
-            if show_progress: print(str(progress) + ' item(s) left..')
-            progress -= 1
-
             first_row_dict = data.iloc[row].to_dict()
             first_element = str(first_row_dict[header[0]])
             self.create_object(first_element)
@@ -174,13 +170,6 @@ class Neo4jManager:
             key_embedding = self.embed_model.get_query_embedding(sentences)
             s = str(sentences)
             with self.driver.session() as session:
-                # query = f"""
-                # MATCH (p:OBJECT {{name: $name}})
-                # SET p.embedding = {key_embedding}
-                # SET p.sentences = {s}
-                # RETURN p
-                # """
-                # result = session.run(query, name=first_element)
                 query = """
                 MATCH (p:OBJECT {name: $name})
                 SET p.sentences = $sentences
@@ -189,25 +178,28 @@ class Neo4jManager:
                 result = session.run(query, name=first_element, sentences=s)
 
                 summary = result.consume()
-
                 # print(f"Query counters: {summary.counters}.")
+
+            if show_progress: print(str(progress) + ' item(s) left..')
+            progress -= 1
+
         print()
 
-    def list_all_nodes(self, object_name):
-        nodes = []
-        with self.driver.session() as session:
-            query = """
-            MATCH (p:OBJECT {name: $object_name})-[r]->(object2:OBJECT)
-            RETURN type(r) AS relationship_type, object2.name AS object2
-            """
-            result = session.run(query, object_name=object_name)
-            records = [f"{record['object2']}" for record in result]
-            nodes = records
-
-        return nodes if len(nodes)!=0 else f"No relationships found for '{object_name}'."
-
     def return_prompt_specific_data(self, object_name, prompt):
-        item_list = self.list_all_nodes(object_name)
+        def list_all_nodes(object_name):
+            nodes = []
+            with self.driver.session() as session:
+                query = """
+                MATCH (p:OBJECT {name: $object_name})-[r]->(object2:OBJECT)
+                RETURN type(r) AS relationship_type, object2.name AS object2
+                """
+                result = session.run(query, object_name=object_name)
+                records = [f"{record['object2']}" for record in result]
+                nodes = records
+
+            return nodes if len(nodes)!=0 else f"No relationships found for '{object_name}'."
+
+        item_list = list_all_nodes(object_name)
         lowered_item_list = [i.lower() for i in item_list]
         lowered = prompt.lower().split(' ')
         item = ''
@@ -220,9 +212,36 @@ class Neo4jManager:
                 item = item_list[i]
 
         # all_properties = self.find_by_property(object_name=item, property_type='sentences')
-        all_properties = self.find_all_properties(item)
 
-        return all_properties if item != '' else False
+        if item != '':
+            print('Item found!')
+            return self.find_by_property(object_name=item, property_type='sentences')  
+        else:
+            print('NOT found!')
+            return self.return_all_data(object_name=object_name)
+
+
+    def return_all_data(self, object_name):
+        def list_all_nodes(object_name):
+            nodes = []
+            with self.driver.session() as session:
+                query = """
+                MATCH (p:OBJECT {name: $object_name})-[r]->(object2:OBJECT)
+                RETURN type(r) AS relationship_type, object2.name AS object2
+                """
+                result = session.run(query, object_name=object_name)
+                records = [f"{record['object2']}" for record in result]
+                nodes = records
+
+            return nodes if len(nodes)!=0 else f"No relationships found for '{object_name}'."
+
+        item_list = list_all_nodes(object_name)
+
+        all_properties = []
+        for item in item_list:
+            all_properties.append(self.find_by_property(object_name=item, property_type='sentences'))
+
+        return all_properties
 
 
 
@@ -335,9 +354,10 @@ if __name__ == "__main__":
     # print(db.find_by_property('ADIQ', 'Northings'))
     # print(db.find_by_property('HETN', 'FirstOccurrence'))
 
-    prompt = 'what is NANP ?'
+    # prompt = 'what is NANP ?'
 
-    print(db.return_prompt_specific_data('Alarms.csv',prompt))
+    # print(db.return_prompt_specific_data('Alarms.csv',prompt))
+    # db.return_all_data('Alarms.csv')
 
 
     # Close the connection
