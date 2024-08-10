@@ -4,15 +4,13 @@ from llama_index.core.embeddings import resolve_embed_model
 from llama_index.llms.ollama import Ollama
 from llama_parse import LlamaParse
 
-os.environ["LLAMA_CLOUD_API_KEY"] = "llx-TuxnaMbo4c7TYeo9EjxpZX4oPMxEDAsX4a8AuxogvurFbklO"
-
-def rag_model(file_name, prompt):
-    BASE_DIR = '/home/genaidevassetv1/portal/data/'
+def rag_model(file_name, llm_model, prompt):
+    BASE_DIR = 'data/'
     file_path = f"{BASE_DIR}{file_name}"
     persist_dir = f"{BASE_DIR}vectordb/"
 
     Settings.embed_model = resolve_embed_model("local:BAAI/bge-small-en-v1.5")
-    Settings.llm = Ollama(model="llama3", request_timeout=30.0, temperature=0)
+    Settings.llm = Ollama(model=llm_model, request_timeout=30.0, temperature=0)
 
     documents = LlamaParse(result_type="text").load_data(file_path)
 

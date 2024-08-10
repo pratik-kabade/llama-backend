@@ -1,6 +1,5 @@
 from neo4j import GraphDatabase
 from dotenv import load_dotenv
-import os
 import pandas as pd
 from llama_index.embeddings.ollama import OllamaEmbedding
 import requests
@@ -9,20 +8,18 @@ from requests.auth import HTTPBasicAuth
 # OBJECT is the name of database
 
 class Neo4jManager:
-    def __init__(self):
+    def __init__(self, username, password, uri, base_uri, llm_model, debug_mode=False):
         # Load environment variables from .env file
         load_dotenv()
 
-        self.username = os.getenv("NEO4J_USER")
-        self.password = os.getenv("NEO4J_PASSWORD")
-        self.uri = os.getenv("NEO4J_URI")
-        self.base_uri = os.getenv("NEO4J_BASEURL")
-        self.llm_model = os.getenv("LLM_MODEL")
-        # self.username = 'neo4j'
-        # self.password = 'genesis'
-        # self.uri = 'bolt://localhost:7687'
-        # self.base_uri = 'http://localhost:7474'
-        # self.llm_model = 'llama3'
+        self.username = username
+        self.password = password
+        self.uri = uri
+        self.base_uri = base_uri
+        self.llm_model = llm_model
+        self.debug_mode = debug_mode
+
+        if self.debug_mode: print('> Initializing Neo4jManager..')
 
         self.driver = GraphDatabase.driver(self.uri, auth=(self.username, self.password))
         self.embed_model = OllamaEmbedding(
@@ -30,9 +27,11 @@ class Neo4jManager:
             base_url="http://localhost:11434",
         )
         self.relation_used = 'CONTAINS'
+        if self.debug_mode: print('=> Neo4jManager Initialized')
 
 
     def algo(self, prop, obj_name, value):        
+        if self.debug_mode: print('> Creating algo..')
         algo = prop + ' of ' + obj_name + ' is ' + value
         return algo        
         
@@ -49,6 +48,7 @@ class Neo4jManager:
             return "\n".join(objects) if objects else "No objects found."
 
     def show_relationships(self):
+        if self.debug_mode: print('> Showing relationships..')
         # Read all objects and their relationships, and return their details as a string
         with self.driver.session() as session:
             result = session.run(
@@ -61,9 +61,11 @@ class Neo4jManager:
             return "\n\n".join(records) if records else "No objects found."
 
     def close(self):
+        if self.debug_mode: print('> Closing driver..')
         self.driver.close()
 
     def create_object(self, name):
+        if self.debug_mode: print('> Creating object..')
         with self.driver.session() as session:
             result = session.run(
                 """
@@ -74,8 +76,10 @@ class Neo4jManager:
             )
             count = result.single()["count"]
             # print(f"Created {count} node.")
+        if self.debug_mode: print('=> Object Created')
 
     def update_object(self, name, prop):
+        if self.debug_mode: print('> Updating object..')
         with self.driver.session() as session:
             result = session.run(
                 """
@@ -88,8 +92,10 @@ class Neo4jManager:
             )
             summary = result.consume()
             # print(f"Query counters: {summary.counters}.")
+        if self.debug_mode: print('=> Object Updated')
 
     def create_relationship(self, name, object2, relationship):
+        if self.debug_mode: print('> Creating relationship..')
         with self.driver.session() as session:
             query = f"""
             MATCH (obj1:OBJECT {{name: $name}})
@@ -100,8 +106,10 @@ class Neo4jManager:
             result = session.run(query, name=name, object2=object2)
             summary = result.consume()
             # print(f"Query counters: {summary.counters}.")
+        if self.debug_mode: print('=> Relationship Created')
 
     def delete_object(self, name):
+        if self.debug_mode: print('> Deleting Object..')
         with self.driver.session() as session:
             result = session.run(
                 """
@@ -113,8 +121,10 @@ class Neo4jManager:
             )
             summary = result.consume()
             # print(f"Query counters: {summary.counters}.")
+        if self.debug_mode: print('=> Object Deleted')
 
     def build_from_csv(self, file):
+        if self.debug_mode: print('> Building from CSV..')
         data = pd.read_csv(file)
         header = data.columns.to_numpy()
         for row in range(len(data)):
@@ -137,8 +147,10 @@ class Neo4jManager:
                     summary = result.consume()
 
                     # print(f"Query counters: {summary.counters}.")
+        if self.debug_mode: print('> Data Build from CSV completed!')
 
     def embeddings_from_csv(self, file, show_progress=False):        
+        if self.debug_mode: print('> Building Embeddings from CSV..')
         lead_object = file.split('/')[-1]
         # print(lead_object)
         self.create_object(lead_object)
@@ -189,11 +201,13 @@ class Neo4jManager:
 
             if show_progress: print(str(progress) + ' item(s) left..')
             progress -= 1
-
+        if self.debug_mode: print('=> Embeddings Build from CSV completed!')
         print()
 
     def return_prompt_specific_data(self, object_name, prompt):
+        if self.debug_mode: print('> Returning prompt specific data..')
         def list_all_nodes(object_name):
+            if self.debug_mode: print('> Listing all nodes..')
             nodes = []
             with self.driver.session() as session:
                 query = """
@@ -228,7 +242,9 @@ class Neo4jManager:
             return self.return_all_data(object_name=object_name)
 
     def return_all_data(self, object_name):
+        if self.debug_mode: print('> Returning all data..')
         def list_all_nodes(object_name):
+            if self.debug_mode: print('> Listing all nodes..')
             nodes = []
             with self.driver.session() as session:
                 query = """
@@ -253,6 +269,7 @@ class Neo4jManager:
 
     # DB_Ops
     def db_op_create_database(self, database_name): #BUG
+        if self.debug_mode: print('> DB-Operation: Creating Database..')
         url = f"{self.base_uri}/db/system/tx/commit"
         headers = {
             "Content-Type": "application/json"
@@ -272,6 +289,7 @@ class Neo4jManager:
             print("Failed to create database:", response.status_code, response.text)
 
     def db_op_get_databases(self):
+        if self.debug_mode: print('> DB-Operation: getting all databases..')
         url = f"{self.base_uri}/db/system/tx/commit"
         headers = {
             "Content-Type": "application/json"
@@ -305,6 +323,7 @@ class Neo4jManager:
             print("Failed to retrieve databases:", response.status_code, response.text)
 
     def db_op_get_database_data(self, database_name):
+        if self.debug_mode: print('> DB-Operation: getting database data..')
         url = f"{self.base_uri}/db/{database_name}/tx/commit"
         headers = {
             "Content-Type": "application/json"
@@ -333,6 +352,7 @@ class Neo4jManager:
             print("Failed to retrieve data:", response.status_code, response.text)
 
     def delete_all_data(self, database_name):
+        if self.debug_mode: print('> DB-Operation: deleting database..')
         url = f"{self.base_uri}/db/{database_name}/tx/commit"
         headers = {
             "Content-Type": "application/json"
@@ -355,6 +375,7 @@ class Neo4jManager:
 
     # Filters
     def find_object(self, name):
+        if self.debug_mode: print('> Filters: finding object..')
         with self.driver.session() as session:
             result = session.run(
                 """
@@ -377,7 +398,7 @@ class Neo4jManager:
                 return f"OBJECT with name '{name}' not found."
 
     def find_by_relationship(self, object2, relationship_type):
-
+        if self.debug_mode: print('> Filters: finding relationship..')
         with self.driver.session() as session:
             query = f"""
             MATCH (p:OBJECT)-[r:{relationship_type}]->(object2:OBJECT {{name: $object2}})
@@ -388,6 +409,7 @@ class Neo4jManager:
             return "\n".join(records) if records else f"No objects found with relationship '{relationship_type}' to '{object2}'."
 
     def find_by_property(self, object_name, property_type):
+        if self.debug_mode: print('> Filters: finding property..')
         with self.driver.session() as session:
             query = """
             MATCH (p:OBJECT {name: $object_name})
@@ -405,6 +427,7 @@ class Neo4jManager:
             return property_values
 
     def find_all_relationships(self, object_name):
+        if self.debug_mode: print('> Filters: finding all relationship..')
         with self.driver.session() as session:
             query = """
             MATCH (p:OBJECT {name: $object_name})-[r]->(object2:OBJECT)
@@ -415,6 +438,7 @@ class Neo4jManager:
             return "\n".join(records) if records else f"No relationships found for '{object_name}'."
 
     def find_all_properties(self, object_name):
+        if self.debug_mode: print('> Filters: finding all properties..')
         with self.driver.session() as session:
             query = """
             MATCH (p:OBJECT {name: $object_name})
@@ -427,7 +451,13 @@ class Neo4jManager:
 
 # Example usage
 if __name__ == "__main__":
-    db = Neo4jManager()
+    username = 'neo4j'
+    password = 'genesis'
+    uri = 'bolt://localhost:7687'
+    base_uri = 'http://localhost:7474'
+    llm_model = 'llama3'
+
+    db = Neo4jManager(username, password, uri, base_uri, llm_model)
 
     # db.create_object("DeviceID1")
     # db.create_object("AlarmID1")
