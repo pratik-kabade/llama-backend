@@ -22,10 +22,6 @@ class Neo4jManager:
         if self.debug_mode: print('> Initializing Neo4jManager..')
 
         self.driver = GraphDatabase.driver(self.uri, auth=(self.username, self.password))
-        self.embed_model = OllamaEmbedding(
-            model_name=self.llm_model,
-            base_url="http://localhost:11434",
-        )
         self.relation_used = 'CONTAINS'
         if self.debug_mode: print('=> Neo4jManager Initialized')
 
@@ -61,8 +57,8 @@ class Neo4jManager:
             return "\n\n".join(records) if records else "No objects found."
 
     def close(self):
-        if self.debug_mode: print('> Closing driver..')
         self.driver.close()
+        if self.debug_mode: print('=> Driver closed')
 
     def create_object(self, name):
         if self.debug_mode: print('> Creating object..')
@@ -123,34 +119,8 @@ class Neo4jManager:
             # print(f"Query counters: {summary.counters}.")
         if self.debug_mode: print('=> Object Deleted')
 
-    def build_from_csv(self, file):
+    def build_from_csv(self, file, show_progress=False):        
         if self.debug_mode: print('> Building from CSV..')
-        data = pd.read_csv(file)
-        header = data.columns.to_numpy()
-        for row in range(len(data)):
-            first_row_dict = data.iloc[row].to_dict()
-            first_element = first_row_dict[header[0]]
-            self.create_object(first_element)
-
-            for col in range(len(header)):
-                col_name = header[col]
-                value = first_row_dict[header[col]]
-                # print(first_row_dict[header[0]] ,'|||', col_name ,'|||', value)
-
-                with self.driver.session() as session:
-                    query = f"""
-                    MATCH (p:OBJECT {{name: $name}})
-                    SET p.{col_name} = $value
-                    RETURN p
-                    """
-                    result = session.run(query, name=first_row_dict[header[0]], value=value)
-                    summary = result.consume()
-
-                    # print(f"Query counters: {summary.counters}.")
-        if self.debug_mode: print('> Data Build from CSV completed!')
-
-    def embeddings_from_csv(self, file, show_progress=False):        
-        if self.debug_mode: print('> Building Embeddings from CSV..')
         lead_object = file.split('/')[-1]
         # print(lead_object)
         self.create_object(lead_object)
@@ -186,7 +156,6 @@ class Neo4jManager:
 
                     # print(f"Query counters: {summary.counters}.")
 
-            key_embedding = self.embed_model.get_query_embedding(sentences)
             s = str(sentences)
             with self.driver.session() as session:
                 query = """
@@ -202,25 +171,25 @@ class Neo4jManager:
             if show_progress: print(str(progress) + ' item(s) left..')
             progress -= 1
         if self.debug_mode: print('=> Embeddings Build from CSV completed!')
-        print()
+        if self.debug_mode: print()
 
-    def return_prompt_specific_data(self, object_name, prompt):
+    def list_all_nodes(self, object_name):
+        if self.debug_mode: print('> Listing all nodes..')
+        nodes = []
+        with self.driver.session() as session:
+            query = """
+            MATCH (p:OBJECT {name: $object_name})-[r]->(object2:OBJECT)
+            RETURN type(r) AS relationship_type, object2.name AS object2
+            """
+            result = session.run(query, object_name=object_name)
+            records = [f"{record['object2']}" for record in result]
+            nodes = records
+
+        return nodes if len(nodes)!=0 else f"No relationships found for '{object_name}'."
+
+    def return_prompt_specific_data(self, object_name, prompt, prop='sentences'):
         if self.debug_mode: print('> Returning prompt specific data..')
-        def list_all_nodes(object_name):
-            if self.debug_mode: print('> Listing all nodes..')
-            nodes = []
-            with self.driver.session() as session:
-                query = """
-                MATCH (p:OBJECT {name: $object_name})-[r]->(object2:OBJECT)
-                RETURN type(r) AS relationship_type, object2.name AS object2
-                """
-                result = session.run(query, object_name=object_name)
-                records = [f"{record['object2']}" for record in result]
-                nodes = records
-
-            return nodes if len(nodes)!=0 else f"No relationships found for '{object_name}'."
-
-        item_list = list_all_nodes(object_name)
+        item_list = self.list_all_nodes(object_name)
         lowered_item_list = [i.lower() for i in item_list]
         lowered = prompt.lower().split(' ')
         item = ''
@@ -235,35 +204,32 @@ class Neo4jManager:
         # all_properties = self.find_by_property(object_name=item, property_type='sentences')
 
         if item != '':
-            print('Item found!')
-            return self.find_by_property(object_name=item, property_type='sentences')  
+            if self.debug_mode: print('Item found from the prompt!')
+            result = self.find_by_property(object_name=item, property_type=prop)
+            return result[0] if len(result)==1 else result
         else:
-            print('NOT found!')
+            print('NO item found from the prompt!')
             return self.return_all_data(object_name=object_name)
 
     def return_all_data(self, object_name):
         if self.debug_mode: print('> Returning all data..')
-        def list_all_nodes(object_name):
-            if self.debug_mode: print('> Listing all nodes..')
-            nodes = []
-            with self.driver.session() as session:
-                query = """
-                MATCH (p:OBJECT {name: $object_name})-[r]->(object2:OBJECT)
-                RETURN type(r) AS relationship_type, object2.name AS object2
-                """
-                result = session.run(query, object_name=object_name)
-                records = [f"{record['object2']}" for record in result]
-                nodes = records
-
-            return nodes if len(nodes)!=0 else f"No relationships found for '{object_name}'."
-
-        item_list = list_all_nodes(object_name)
+        item_list = self.list_all_nodes(object_name)
 
         all_properties = []
         for item in item_list:
             all_properties.append(self.find_by_property(object_name=item, property_type='sentences'))
 
         return all_properties
+
+    def query_data_by_key(self, primary_object, primary_key, secondary_property, _file1='', _file2=''):
+        if self.debug_mode: print(f'> Querying {_file2},[obj2] (=>) on {_file1},[OBJ1]..')
+        primary_key_value = self.find_by_property(primary_object, primary_key)
+        if self.debug_mode: print(f'-----> Value of {primary_key} is {primary_key_value}')
+        secondary_property_value = []
+        for i in primary_key_value:
+            secondary_property_value.append(self.find_by_property(i, secondary_property))
+        if self.debug_mode: print(f'-----> {secondary_property} of {primary_object} is {secondary_property_value}')
+        return secondary_property_value
 
 
 
@@ -452,10 +418,10 @@ class Neo4jManager:
 # Example usage
 if __name__ == "__main__":
     username = 'neo4j'
-    password = 'genesis'
+    password = '123'
     uri = 'bolt://localhost:7687'
     base_uri = 'http://localhost:7474'
-    llm_model = 'llama3'
+    llm_model = 'llama2'
 
     db = Neo4jManager(username, password, uri, base_uri, llm_model)
 
@@ -482,9 +448,14 @@ if __name__ == "__main__":
     # print(db.find_object('DeviceID1'))
     # print(db.find_by_relationship("TTID2", "HAS_TT2"))
 
-    # db.build_from_csv('./data/Alarms.csv')
+    # # db.build_from_csv('./data/Alarms.csv')
+    # db.build_from_csv('./data/f1.csv')
+    # db.build_from_csv('./data/f2.csv')
+    # print(db.query_data_by_key(primary_object='4115', primary_key='RESID', secondary_property='desc', 
+    #                           _file1='f1.csv', _file2='f2.csv'))
+    # print(db.find_by_property('RES1', 'RESID'))
     # print(db)
-    # db.embeddings_from_csv('./data/Alarms.csv')
+    # db.build_from_csv('./data/Alarms.csv')
     # print(db.find_all_properties('HETN'))
     # print(db.find_all_relationships('HETN'))
     # print(db.list_all_nodes('Alarms.csv'))
@@ -496,6 +467,13 @@ if __name__ == "__main__":
     # print(db.return_prompt_specific_data('Alarms.csv',prompt))
     # db.return_all_data('Alarms.csv')
 
+    # db.build_from_csv('data/sample/compensation.csv')
+    # db.build_from_csv('data/sample/employees.csv')
+    # db.build_from_csv('data/sample/work_experience.csv')
+    # print(db.query_data_by_key(primary_object='Bob', primary_key='id', secondary_property='salary'))
+    # print(db.find_by_property('Bob', 'description'))
 
+    # print(db)
+    # db.delete_all_data('neo4j')
     # Close the connection
     db.close()
