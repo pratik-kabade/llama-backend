@@ -17,16 +17,65 @@ class Neo4jManager:
         self.base_uri = base_uri
         self.llm_model = llm_model
         self.debug_mode = debug_mode
+        self.logs = ''
 
-        if self.debug_mode: print('> Initializing Neo4jManager..')
+        self.log_manager('init-neo4j')
 
         self.driver = GraphDatabase.driver(self.uri, auth=(self.username, self.password))
         self.relation_used = 'CONTAINS'
-        if self.debug_mode: print('=> Neo4jManager Initialized\n')
+        self.log_manager('init-neo4j-done')
 
+    def log_manager(self, fn, v1='', v2='', v3=''):
+        if self.debug_mode:
+            log_messages = {
+                "init-neo4j": '> Initializing Neo4jManager..',
+                "init-neo4j-done": '=> Neo4jManager Initialized\n',
+                "algo": '> Creating algo...',
+                "show-rel": '> Showing relationships..',
+                "close": '=> Driver closed\n',
+                "create": f'> Creating object "{v1}"..',
+                "create-done": f'=> Object Created "{v1}"\n',
+                "create-prop": f'> Creating property->"{v1}" for "{v2}" as "{v3}"..',
+                "create-prop-done": f'=> Property created->"{v1}" for "{v2}" as "{v3}"\n',
+                "create-rel": f'> Creating relationship "{v1}" for "{v2}" with "{v3}"..',
+                "create-rel-done": f'=> Relationship created "{v1}" for "{v2}" with "{v3}"\n',
+                "delete-obj": f'> Deleting Object "{v1}"..',
+                "delete-obj-done": f'=> Object Deleted "{v1}"\n',
+                "build-csv": '> Building from CSV..',
+                "build-csv-done": '=> Embeddings Build from CSV completed!\n',
+                "list-all-node": '> Listing all nodes..',
+                "return-prompt-sp": '> Returning prompt specific data..',
+                "item-found": 'Item found from the prompt!',
+                "return-all": '> Returning all data..',
+                "query1": f'> Querying "{v1}",[obj2] (=>) on "{v2}",[OBJ1]..',
+                "query2": f'-----> Value of "{v1}" is "{v2}"',
+                "query3": f'-----> "{v1}" of "{v2}" is "{v3}"',
+                "merge": f'> Merging "{v1}",[file2] (=>) on "{v2}",[FILE1]..',
+                "merge-done": f'=> Merged "{v1}",[file2] (=>) on "{v2}",[FILE1]\n',
+                "db-create": '> DB-Operation: Creating Database..',
+                "db-create-done": '=> DB-Operation: database created\n',
+                "db-get-all": '> DB-Operation: getting all databases..',
+                "db-get": '> DB-Operation: getting database data..',
+                "db-delete": '> DB-Operation: deleting database..',
+                "db-delete-done": '=> DB-Operation: database deleted\n',
+                "find-obj": '> Filters: finding object..',
+                "find-rel": '> Filters: finding relationship..',
+                "find-prop": '> Filters: finding property..',
+                "find-all-rel": '> Filters: finding all relationships..',
+                "find-all-prop": '> Filters: finding all properties..',
+            }
+            
+            log = log_messages.get(fn, '> Default logging')
+                        
+            if fn == "close":
+                with open('logs.txt', 'w') as file:
+                    file.write(self.logs)
+
+            self.logs += log + '\n'
+            # print(log)
 
     def algo(self, prop, obj_name, value):        
-        if self.debug_mode: print('> Creating algo..')
+        self.log_manager('algo')
         algo = prop + ' of ' + obj_name + ' is ' + value
         return algo        
         
@@ -43,7 +92,7 @@ class Neo4jManager:
             return "\n".join(objects) if objects else "No objects found.\n"
 
     def show_relationships(self):
-        if self.debug_mode: print('> Showing relationships..')
+        self.log_manager('show-rel')
         # Read all objects and their relationships, and return their details as a string
         with self.driver.session() as session:
             result = session.run(
@@ -57,10 +106,10 @@ class Neo4jManager:
 
     def close(self):
         self.driver.close()
-        if self.debug_mode: print('=> Driver closed\n')
+        self.log_manager('close')
 
     def create_object(self, name):
-        if self.debug_mode: print('> Creating object..')
+        self.log_manager('create', v1=name)
         with self.driver.session() as session:
             result = session.run(
                 """
@@ -71,12 +120,11 @@ class Neo4jManager:
             )
             count = result.single()["count"]
             # print(f"Created {count} node.")
-        if self.debug_mode: print('=> Object Created\n')
+        self.log_manager('create-done', v1=name)
 
     def create_property(self, name, prop, value):
-        if self.debug_mode:
-            print(f'> Creating property->{prop} for {name} as {value}..')
-            
+        self.log_manager('create-prop', v1=prop, v2=name, v3=value)
+
         # Construct the Cypher query with dynamic property names
         query = f"""
         MATCH (p:OBJECT {{name: $name}})
@@ -88,10 +136,10 @@ class Neo4jManager:
             result = session.run(query, name=name, value=value)
             summary = result.consume()
             # print(f"Query counters: {summary.counters}.")
-        if self.debug_mode: print(f'=> Property created->{prop} for {name} as {value}\n')
+        self.log_manager('create-prop-done', v1=prop, v2=name, v3=value)
 
     def create_relationship(self, name, object2, relationship):
-        if self.debug_mode: print(f'> Creating relationship {relationship} for {name} with {object2}..')
+        self.log_manager('create-rel', v1=relationship, v2=name, v3=object2)
         with self.driver.session() as session:
             query = f"""
             MATCH (obj1:OBJECT {{name: $name}})
@@ -102,10 +150,10 @@ class Neo4jManager:
             result = session.run(query, name=name, object2=object2)
             summary = result.consume()
             # print(f"Query counters: {summary.counters}.")
-        if self.debug_mode: print('=> Relationship created {relationship} for {name} with {object2}\n')
+        self.log_manager('create-rel-done', v1=relationship, v2=name, v3=object2)
 
     def delete_object(self, name):
-        if self.debug_mode: print('> Deleting Object..')
+        self.log_manager('delete-obj', v1=name)
         with self.driver.session() as session:
             result = session.run(
                 """
@@ -117,10 +165,10 @@ class Neo4jManager:
             )
             summary = result.consume()
             # print(f"Query counters: {summary.counters}.")
-        if self.debug_mode: print('=> Object Deleted\n')
+        self.log_manager('delete-obj-done', v1=name)
 
     def build_from_csv(self, file, show_progress=False):        
-        if self.debug_mode: print('> Building from CSV..')
+        self.log_manager('build-csv')
         lead_object = file.split('/')[-1]
         # print(lead_object)
         self.create_object(lead_object)
@@ -149,11 +197,10 @@ class Neo4jManager:
             self.create_property(first_element,'sentences',s)
             if show_progress: print(str(progress) + ' item(s) left..')
             progress -= 1
-        if self.debug_mode: print('=> Embeddings Build from CSV completed!\n')
-        if self.debug_mode: print()
+        self.log_manager('build-csv-done')
 
     def list_all_nodes(self, object_name):
-        if self.debug_mode: print('> Listing all nodes..')
+        self.log_manager('list-all-node')
         nodes = []
         with self.driver.session() as session:
             query = """
@@ -167,7 +214,7 @@ class Neo4jManager:
         return nodes if len(nodes)!=0 else f"No relationships found for '{object_name}'."
 
     def return_prompt_specific_data(self, object_name, prompt, prop='sentences'):
-        if self.debug_mode: print('> Returning prompt specific data..')
+        self.log_manager('return-prompt-sp')
         item_list = self.list_all_nodes(object_name)
         lowered_item_list = [i.lower() for i in item_list]
         lowered = prompt.lower().split(' ')
@@ -183,7 +230,7 @@ class Neo4jManager:
         # all_properties = self.find_by_property(object_name=item, property_type='sentences')
 
         if item != '':
-            if self.debug_mode: print('Item found from the prompt!')
+            self.log_manager('item-found')
             result = self.find_by_property(object_name=item, property_type=prop)
             return result[0] if len(result)==1 else result
         else:
@@ -191,7 +238,7 @@ class Neo4jManager:
             return self.return_all_data(object_name=object_name)
 
     def return_all_data(self, object_name):
-        if self.debug_mode: print('> Returning all data..')
+        self.log_manager('return-all')
         item_list = self.list_all_nodes(object_name)
 
         all_properties = []
@@ -201,20 +248,20 @@ class Neo4jManager:
         return all_properties
 
     def query_data_by_key(self, primary_object, primary_key, secondary_property):
-        if self.debug_mode: print(f'> Querying {secondary_property},[obj2] (=>) on {primary_object},[OBJ1]..')
+        self.log_manager('query1', v1=secondary_property, v2=primary_object)
         primary_key_value = self.find_by_property(primary_object, primary_key)
-        if self.debug_mode: print(f'-----> Value of {primary_key} is {primary_key_value}')
+        self.log_manager('query2', v1=primary_key, v2=primary_key_value)
         secondary_property_value = []
         if type(primary_key_value) == list:
             for i in primary_key_value:
                 secondary_property_value.append(self.find_by_property(i, secondary_property))
         else:
             secondary_property_value.append(self.find_by_property(primary_key_value, secondary_property))
-        if self.debug_mode: print(f'-----> {secondary_property} of {primary_object} is {secondary_property_value}')
+        self.log_manager('query3', v1=secondary_property, v2=primary_object, v3=secondary_property_value)
         return secondary_property_value
 
     def merge_properties(self, FILE1, file2, primary_key, show_progress=False):
-        if self.debug_mode: print(f'> Merging {file2},[file2] (=>) on {FILE1},[FILE1]..')
+        self.log_manager('merge', v1=file2, v2=FILE1)
         FILE1_nodes = self.list_all_nodes(FILE1)
         file2_nodes = self.list_all_nodes(file2)
         progress = len(FILE1_nodes)
@@ -255,13 +302,13 @@ class Neo4jManager:
             if show_progress: print(str(progress) + ' item(s) left..')
             progress -= 1
 
-        if self.debug_mode: print(f'=> Merged {file2},[file2] (=>) on {FILE1},[FILE1]\n')
+        self.log_manager('merge-done', v1=file2, v2=FILE1)
 
 
 
     # DB_Ops
     def db_op_create_database(self, database_name): #BUG
-        if self.debug_mode: print('> DB-Operation: Creating Database..')
+        self.log_manager('db-create')
         url = f"{self.base_uri}/db/system/tx/commit"
         headers = {
             "Content-Type": "application/json"
@@ -277,11 +324,12 @@ class Neo4jManager:
         response = requests.post(url, json=query, headers=headers, auth=HTTPBasicAuth(self.username, self.password))
         if response.status_code == 200:
             print(f"Database '{database_name}' created successfully.")
+            self.log_manager('db-create-done')
         else:
             print("Failed to create database:", response.status_code, response.text)
 
     def db_op_get_databases(self):
-        if self.debug_mode: print('> DB-Operation: getting all databases..')
+        self.log_manager('db-get-all')
         url = f"{self.base_uri}/db/system/tx/commit"
         headers = {
             "Content-Type": "application/json"
@@ -315,7 +363,7 @@ class Neo4jManager:
             print("Failed to retrieve databases:", response.status_code, response.text)
 
     def db_op_get_database_data(self, database_name):
-        if self.debug_mode: print('> DB-Operation: getting database data..')
+        self.log_manager('db-get')
         url = f"{self.base_uri}/db/{database_name}/tx/commit"
         headers = {
             "Content-Type": "application/json"
@@ -344,7 +392,7 @@ class Neo4jManager:
             print("Failed to retrieve data:", response.status_code, response.text)
 
     def delete_all_data(self, database_name):
-        if self.debug_mode: print('> DB-Operation: deleting database..')
+        self.log_manager('db-delete')
         url = f"{self.base_uri}/db/{database_name}/tx/commit"
         headers = {
             "Content-Type": "application/json"
@@ -360,6 +408,7 @@ class Neo4jManager:
         response = requests.post(url, json=query, headers=headers, auth=HTTPBasicAuth(self.username, self.password))
         if response.status_code == 200:
             print(f"All data from '{database_name}' deleted successfully.")
+            self.log_manager('db-delete-done')
         else:
             print("Failed to delete data:", response.status_code, response.text)
 
@@ -367,7 +416,7 @@ class Neo4jManager:
 
     # Filters
     def find_object(self, name):
-        if self.debug_mode: print('> Filters: finding object..')
+        self.log_manager('find-obj')
         with self.driver.session() as session:
             result = session.run(
                 """
@@ -390,7 +439,7 @@ class Neo4jManager:
                 return f"OBJECT with name '{name}' not found."
 
     def find_by_relationship(self, object2, relationship_type):
-        if self.debug_mode: print('> Filters: finding relationship..')
+        self.log_manager('find-rel')
         with self.driver.session() as session:
             query = f"""
             MATCH (p:OBJECT)-[r:{relationship_type}]->(object2:OBJECT {{name: $object2}})
@@ -401,7 +450,7 @@ class Neo4jManager:
             return "\n".join(records) if records else f"No objects found with relationship '{relationship_type}' to '{object2}'."
 
     def find_by_property(self, object_name, property_type):
-        if self.debug_mode: print('> Filters: finding property..')
+        self.log_manager('find-prop')
         with self.driver.session() as session:
             query = """
             MATCH (p:OBJECT {name: $object_name})
@@ -419,7 +468,7 @@ class Neo4jManager:
             return property_values
 
     def find_all_relationships(self, object_name):
-        if self.debug_mode: print('> Filters: finding all relationship..')
+        self.log_manager('find-all-rel')
         with self.driver.session() as session:
             query = """
             MATCH (p:OBJECT {name: $object_name})-[r]->(object2:OBJECT)
@@ -430,7 +479,7 @@ class Neo4jManager:
             return "\n".join(records) if records else f"No relationships found for '{object_name}'."
 
     def find_all_properties(self, object_name):
-        if self.debug_mode: print('> Filters: finding all properties..')
+        self.log_manager('find-all-prop')
         with self.driver.session() as session:
             query = """
             MATCH (p:OBJECT {name: $object_name})
@@ -499,17 +548,17 @@ if __name__ == "__main__":
     # print(db.return_prompt_specific_data('Alarms.csv',prompt))
     # db.return_all_data('Alarms.csv')
 
-    db.delete_all_data('neo4j')
-    file1 = 'employees.csv'
-    file2 = 'compensation.csv'
-    file3 = 'work_experience.csv'
-    pk = 'id'
-    db.build_from_csv('data/sample/compensation.csv')
-    db.build_from_csv('data/sample/employees.csv')
-    db.build_from_csv('data/sample/work_experience.csv')
-    db.merge_properties(file1, file2, pk)
-    db.merge_properties(file1, file3, pk, True)
-    print(db.find_by_property('Charlie', 'experience'))
+    # db.delete_all_data('neo4j')
+    # file1 = 'employees.csv'
+    # file2 = 'compensation.csv'
+    # file3 = 'work_experience.csv'
+    # pk = 'id'
+    # db.build_from_csv('data/sample/compensation.csv')
+    # db.build_from_csv('data/sample/employees.csv')
+    # db.build_from_csv('data/sample/work_experience.csv')
+    # db.merge_properties(file1, file2, pk)
+    # db.merge_properties(file1, file3, pk, True)
+    # print(db.find_by_property('Charlie', 'experience'))
 
     # db.delete_all_data('neo4j')
     # Close the connection
