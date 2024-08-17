@@ -1,7 +1,6 @@
 from neo4j import GraphDatabase
 from dotenv import load_dotenv
 import pandas as pd
-from llama_index.embeddings.ollama import OllamaEmbedding
 import requests
 from requests.auth import HTTPBasicAuth
 
@@ -23,7 +22,7 @@ class Neo4jManager:
 
         self.driver = GraphDatabase.driver(self.uri, auth=(self.username, self.password))
         self.relation_used = 'CONTAINS'
-        if self.debug_mode: print('=> Neo4jManager Initialized')
+        if self.debug_mode: print('=> Neo4jManager Initialized\n')
 
 
     def algo(self, prop, obj_name, value):        
@@ -41,7 +40,7 @@ class Neo4jManager:
                 """
             )
             objects = [f"Name: {record['name']}" for record in result]
-            return "\n".join(objects) if objects else "No objects found."
+            return "\n".join(objects) if objects else "No objects found.\n"
 
     def show_relationships(self):
         if self.debug_mode: print('> Showing relationships..')
@@ -54,11 +53,11 @@ class Neo4jManager:
                 """
             )
             records = [f"1: {record['name']}, \n {record['relationship']} \n2: {record['object2']}" for record in result]
-            return "\n\n".join(records) if records else "No objects found."
+            return "\n\n".join(records) if records else "No objects found.\n"
 
     def close(self):
         self.driver.close()
-        if self.debug_mode: print('=> Driver closed')
+        if self.debug_mode: print('=> Driver closed\n')
 
     def create_object(self, name):
         if self.debug_mode: print('> Creating object..')
@@ -72,26 +71,27 @@ class Neo4jManager:
             )
             count = result.single()["count"]
             # print(f"Created {count} node.")
-        if self.debug_mode: print('=> Object Created')
+        if self.debug_mode: print('=> Object Created\n')
 
-    def update_object(self, name, prop):
-        if self.debug_mode: print('> Updating object..')
+    def create_property(self, name, prop, value):
+        if self.debug_mode:
+            print(f'> Creating property->{prop} for {name} as {value}..')
+            
+        # Construct the Cypher query with dynamic property names
+        query = f"""
+        MATCH (p:OBJECT {{name: $name}})
+        SET p.{prop} = $value
+        RETURN p
+        """
+
         with self.driver.session() as session:
-            result = session.run(
-                """
-                MATCH (p:OBJECT {name: $name})
-                SET p.prop = $prop
-                RETURN p
-                """,
-                name=name,
-                prop=prop
-            )
+            result = session.run(query, name=name, value=value)
             summary = result.consume()
             # print(f"Query counters: {summary.counters}.")
-        if self.debug_mode: print('=> Object Updated')
+        if self.debug_mode: print(f'=> Property created->{prop} for {name} as {value}\n')
 
     def create_relationship(self, name, object2, relationship):
-        if self.debug_mode: print('> Creating relationship..')
+        if self.debug_mode: print(f'> Creating relationship {relationship} for {name} with {object2}..')
         with self.driver.session() as session:
             query = f"""
             MATCH (obj1:OBJECT {{name: $name}})
@@ -102,7 +102,7 @@ class Neo4jManager:
             result = session.run(query, name=name, object2=object2)
             summary = result.consume()
             # print(f"Query counters: {summary.counters}.")
-        if self.debug_mode: print('=> Relationship Created')
+        if self.debug_mode: print('=> Relationship created {relationship} for {name} with {object2}\n')
 
     def delete_object(self, name):
         if self.debug_mode: print('> Deleting Object..')
@@ -117,7 +117,7 @@ class Neo4jManager:
             )
             summary = result.consume()
             # print(f"Query counters: {summary.counters}.")
-        if self.debug_mode: print('=> Object Deleted')
+        if self.debug_mode: print('=> Object Deleted\n')
 
     def build_from_csv(self, file, show_progress=False):        
         if self.debug_mode: print('> Building from CSV..')
@@ -143,34 +143,13 @@ class Neo4jManager:
                 sentence = self.algo(prop=col_name, obj_name=first_element, value=value) 
                 # print(sentence)
                 sentences += sentence + ', '
-
-                with self.driver.session() as session:
-                    query = f"""
-                    MATCH (p:OBJECT {{name: $name}})
-                    SET p.{col_name} = $value
-                    RETURN p
-                    """
-                    result = session.run(query, name=first_element, value=value)
-                
-                    summary = result.consume()
-
-                    # print(f"Query counters: {summary.counters}.")
+                self.create_property(first_element,col_name,value)
 
             s = str(sentences)
-            with self.driver.session() as session:
-                query = """
-                MATCH (p:OBJECT {name: $name})
-                SET p.sentences = $sentences
-                RETURN p
-                """
-                result = session.run(query, name=first_element, sentences=s)
-
-                summary = result.consume()
-                # print(f"Query counters: {summary.counters}.")
-
+            self.create_property(first_element,'sentences',s)
             if show_progress: print(str(progress) + ' item(s) left..')
             progress -= 1
-        if self.debug_mode: print('=> Embeddings Build from CSV completed!')
+        if self.debug_mode: print('=> Embeddings Build from CSV completed!\n')
         if self.debug_mode: print()
 
     def list_all_nodes(self, object_name):
@@ -221,15 +200,62 @@ class Neo4jManager:
 
         return all_properties
 
-    def query_data_by_key(self, primary_object, primary_key, secondary_property, _file1='', _file2=''):
-        if self.debug_mode: print(f'> Querying {_file2},[obj2] (=>) on {_file1},[OBJ1]..')
+    def query_data_by_key(self, primary_object, primary_key, secondary_property):
+        if self.debug_mode: print(f'> Querying {secondary_property},[obj2] (=>) on {primary_object},[OBJ1]..')
         primary_key_value = self.find_by_property(primary_object, primary_key)
         if self.debug_mode: print(f'-----> Value of {primary_key} is {primary_key_value}')
         secondary_property_value = []
-        for i in primary_key_value:
-            secondary_property_value.append(self.find_by_property(i, secondary_property))
+        if type(primary_key_value) == list:
+            for i in primary_key_value:
+                secondary_property_value.append(self.find_by_property(i, secondary_property))
+        else:
+            secondary_property_value.append(self.find_by_property(primary_key_value, secondary_property))
         if self.debug_mode: print(f'-----> {secondary_property} of {primary_object} is {secondary_property_value}')
         return secondary_property_value
+
+    def merge_properties(self, FILE1, file2, primary_key, show_progress=False):
+        if self.debug_mode: print(f'> Merging {file2},[file2] (=>) on {FILE1},[FILE1]..')
+        FILE1_nodes = self.list_all_nodes(FILE1)
+        file2_nodes = self.list_all_nodes(file2)
+        progress = len(FILE1_nodes)
+        for FILE1_node in FILE1_nodes:
+            FILE1_ids = self.find_by_property(FILE1_node, primary_key)
+            
+            for file1_id in FILE1_ids:
+                ID = str(file1_id)
+                index = -1
+
+                # Find ID from file2_nodes
+                for idx, node in enumerate(file2_nodes):
+                    properties = self.find_all_properties(node)
+                    found = False
+                    for key, value in properties.items():
+                        if key == primary_key and value == ID:
+                            index = idx
+                            found = True
+                            break
+                    if found:
+                        break
+                            
+                # Avoid creating duplicate keys
+                dict = self.find_all_properties(FILE1_node)
+                old_items = []
+                for k,v in dict.items():
+                    old_items.append(k)
+                    
+                # Indexing
+                item_to_change = file2_nodes[index]
+                dict = self.find_all_properties(item_to_change)
+                if index != -1:                
+                    for k,v in dict.items():                    
+                        if k not in old_items:
+                            self.create_property(FILE1_node,k,v)
+                else:
+                    print(f"No matching '{primary_key}' found for '{ID}' in '{file2}'")
+            if show_progress: print(str(progress) + ' item(s) left..')
+            progress -= 1
+
+        if self.debug_mode: print(f'=> Merged {file2},[file2] (=>) on {FILE1},[FILE1]\n')
 
 
 
@@ -411,8 +437,14 @@ class Neo4jManager:
             RETURN p
             """
             result = session.run(query, object_name=object_name)
-            records = [record["p"] for record in result]
-            return records if records else f"No properties found for '{object_name}'."
+            
+            # Extract the properties from the node
+            properties = {}
+            for record in result:
+                node = record["p"]
+                properties = dict(node)  # Convert the node's properties to a dictionary
+            
+            return properties if properties else f"No properties found for '{object_name}'."
 
 
 # Example usage
@@ -423,7 +455,7 @@ if __name__ == "__main__":
     base_uri = 'http://localhost:7474'
     llm_model = 'llama2'
 
-    db = Neo4jManager(username, password, uri, base_uri, llm_model)
+    db = Neo4jManager(username, password, uri, base_uri, llm_model, True)
 
     # db.create_object("DeviceID1")
     # db.create_object("AlarmID1")
@@ -467,13 +499,18 @@ if __name__ == "__main__":
     # print(db.return_prompt_specific_data('Alarms.csv',prompt))
     # db.return_all_data('Alarms.csv')
 
-    # db.build_from_csv('data/sample/compensation.csv')
-    # db.build_from_csv('data/sample/employees.csv')
-    # db.build_from_csv('data/sample/work_experience.csv')
-    # print(db.query_data_by_key(primary_object='Bob', primary_key='id', secondary_property='salary'))
-    # print(db.find_by_property('Bob', 'description'))
+    db.delete_all_data('neo4j')
+    file1 = 'employees.csv'
+    file2 = 'compensation.csv'
+    file3 = 'work_experience.csv'
+    pk = 'id'
+    db.build_from_csv('data/sample/compensation.csv')
+    db.build_from_csv('data/sample/employees.csv')
+    db.build_from_csv('data/sample/work_experience.csv')
+    db.merge_properties(file1, file2, pk)
+    db.merge_properties(file1, file3, pk, True)
+    print(db.find_by_property('Charlie', 'experience'))
 
-    # print(db)
     # db.delete_all_data('neo4j')
     # Close the connection
     db.close()
