@@ -41,12 +41,12 @@ class Neo4jManager:
                 "create-rel-done": f'=> Relationship created "{v1}" for "{v2}" with "{v3}"\n',
                 "delete-obj": f'> Deleting Object "{v1}"..',
                 "delete-obj-done": f'=> Object Deleted "{v1}"\n',
-                "build-csv": '> Building from CSV..',
-                "build-csv-done": '=> Embeddings Build from CSV completed!\n',
-                "list-all-node": '> Listing all nodes..',
-                "return-prompt-sp": '> Returning prompt specific data..',
+                "build-csv": f'> Building from CSV, "{v1}"..',
+                "build-csv-done": f'=> Embeddings Build from CSV, "{v1}" completed!\n',
+                "list-all-node": f'> Listing all nodes for "{v1}"..',
+                "return-prompt-sp": f'> Returning prompt "{v2}" specific data for object "{v1}"..',
                 "item-found": 'Item found from the prompt!',
-                "return-all": '> Returning all data..',
+                "return-all": f'> Returning all data for "{v1}"..',
                 "query1": f'> Querying "{v1}",[obj2] (=>) on "{v2}",[OBJ1]..',
                 "query2": f'-----> Value of "{v1}" is "{v2}"',
                 "query3": f'-----> "{v1}" of "{v2}" is "{v3}"',
@@ -58,11 +58,11 @@ class Neo4jManager:
                 "db-get": '> DB-Operation: getting database data..',
                 "db-delete": '> DB-Operation: deleting database..',
                 "db-delete-done": '=> DB-Operation: database deleted\n',
-                "find-obj": '> Filters: finding object..',
-                "find-rel": '> Filters: finding relationship..',
-                "find-prop": '> Filters: finding property..',
-                "find-all-rel": '> Filters: finding all relationships..',
-                "find-all-prop": '> Filters: finding all properties..',
+                "find-obj": f'> Filters: finding object "{v1}"..',
+                "find-rel": f'> Filters: finding relationship of "{v1}"..',
+                "find-prop": f'> Filters: finding property of "{v1}"..',
+                "find-all-rel": f'> Filters: finding all relationships of "{v1}"..',
+                "find-all-prop": f'> Filters: finding all properties of "{v1}"..',
             }
             
             log = log_messages.get(fn, '> Default logging')
@@ -168,7 +168,7 @@ class Neo4jManager:
         self.log_manager('delete-obj-done', v1=name)
 
     def build_from_csv(self, file, show_progress=False):        
-        self.log_manager('build-csv')
+        self.log_manager('build-csv', v1=file)
         lead_object = file.split('/')[-1]
         # print(lead_object)
         self.create_object(lead_object)
@@ -197,10 +197,10 @@ class Neo4jManager:
             self.create_property(first_element,'sentences',s)
             if show_progress: print(str(progress) + ' item(s) left..')
             progress -= 1
-        self.log_manager('build-csv-done')
+        self.log_manager('build-csv-done', v1=file)
 
     def list_all_nodes(self, object_name):
-        self.log_manager('list-all-node')
+        self.log_manager('list-all-node',v1=object_name)
         nodes = []
         with self.driver.session() as session:
             query = """
@@ -214,7 +214,7 @@ class Neo4jManager:
         return nodes if len(nodes)!=0 else f"No relationships found for '{object_name}'."
 
     def return_prompt_specific_data(self, object_name, prompt, prop='sentences'):
-        self.log_manager('return-prompt-sp')
+        self.log_manager('return-prompt-sp', v1=object_name, v2=prompt)
         item_list = self.list_all_nodes(object_name)
         lowered_item_list = [i.lower() for i in item_list]
         lowered = prompt.lower().split(' ')
@@ -238,7 +238,7 @@ class Neo4jManager:
             return self.return_all_data(object_name=object_name)
 
     def return_all_data(self, object_name):
-        self.log_manager('return-all')
+        self.log_manager('return-all', v1=object_name)
         item_list = self.list_all_nodes(object_name)
 
         all_properties = []
@@ -416,7 +416,7 @@ class Neo4jManager:
 
     # Filters
     def find_object(self, name):
-        self.log_manager('find-obj')
+        self.log_manager('find-obj', v1=name)
         with self.driver.session() as session:
             result = session.run(
                 """
@@ -439,7 +439,7 @@ class Neo4jManager:
                 return f"OBJECT with name '{name}' not found."
 
     def find_by_relationship(self, object2, relationship_type):
-        self.log_manager('find-rel')
+        self.log_manager('find-rel',v1=object2)
         with self.driver.session() as session:
             query = f"""
             MATCH (p:OBJECT)-[r:{relationship_type}]->(object2:OBJECT {{name: $object2}})
@@ -450,7 +450,7 @@ class Neo4jManager:
             return "\n".join(records) if records else f"No objects found with relationship '{relationship_type}' to '{object2}'."
 
     def find_by_property(self, object_name, property_type):
-        self.log_manager('find-prop')
+        self.log_manager('find-prop',v1=object_name)
         with self.driver.session() as session:
             query = """
             MATCH (p:OBJECT {name: $object_name})
@@ -468,7 +468,7 @@ class Neo4jManager:
             return property_values
 
     def find_all_relationships(self, object_name):
-        self.log_manager('find-all-rel')
+        self.log_manager('find-all-rel',v1=object_name)
         with self.driver.session() as session:
             query = """
             MATCH (p:OBJECT {name: $object_name})-[r]->(object2:OBJECT)
@@ -479,7 +479,7 @@ class Neo4jManager:
             return "\n".join(records) if records else f"No relationships found for '{object_name}'."
 
     def find_all_properties(self, object_name):
-        self.log_manager('find-all-prop')
+        self.log_manager('find-all-prop',v1=object_name)
         with self.driver.session() as session:
             query = """
             MATCH (p:OBJECT {name: $object_name})
@@ -558,7 +558,7 @@ if __name__ == "__main__":
     # db.build_from_csv('data/sample/work_experience.csv')
     # db.merge_properties(file1, file2, pk)
     # db.merge_properties(file1, file3, pk, True)
-    # print(db.find_by_property('Charlie', 'experience'))
+    # print(db.find_by_property('Charlie', 'description'))
 
     # db.delete_all_data('neo4j')
     # Close the connection
