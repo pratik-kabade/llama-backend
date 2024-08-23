@@ -2,6 +2,7 @@ import requests
 import os
 from requests.auth import HTTPBasicAuth
 from dotenv import load_dotenv
+import json
 
 # Load environment variables
 load_dotenv()
@@ -93,29 +94,76 @@ def get_issue_by_id(issue_key):
         print('error: ')
         print(error.response.json().get('errors'))
 
+# Gets comments of an issue by its ID using the Jira Cloud REST API
+def get_comments_by_id(issue_key):
+    try:
+        base_url = f'https://{domain}.atlassian.net'
+        url = f'{base_url}/rest/api/3/issue/{issue_key}'
+        headers = {'Content-Type': 'application/json'}
+        
+        response = requests.get(url, headers=headers, auth=auth)
+        response.raise_for_status() 
+        
+        issue_details = response.json()
+        comments = issue_details.get('fields', {}).get('comment', {}).get('comments', [])
+        
+        filtered_details = [
+            comment.get('body', {}).get('content', [])[0].get('content', [])[0].get('text', '')
+            for comment in comments
+        ]
+        return filtered_details
+    except requests.exceptions.RequestException as error:
+        print('error: ')
+        print(error.response.json().get('errors'))
+
 # Gets all issues in a particular project using the Jira Cloud REST API
-def get_issues():
+def get_issues(results=10, get_all=False):
     try:
         base_url = f'https://{domain}.atlassian.net'
         url = f'{base_url}/rest/api/3/search'
         headers = {'Content-Type': 'application/json'}
+        start_at = 0
+        all_issues = []  # This will accumulate all issues
         
-        response = requests.get(url, headers=headers, auth=auth)
-        response.raise_for_status()  # Raise an error for bad status codes
+        while True:
+            params = {
+                'maxResults': results,
+                'startAt': start_at
+            }
+            
+            response = requests.get(url, headers=headers, auth=auth, params=params)
+            response.raise_for_status()
+            
+            issues = response.json().get('issues', [])
+            all_issues.extend(issues)  # Extend the list with the new issues
+
+            if len(issues) <= params['maxResults']:
+                break  # No more issues to fetch
+            start_at += params['maxResults']
         
-        issues = response.json().get('issues', [])
         filtered_issues = [
+            # TODO comments, parent
             {
                 'key': issue.get('key'),
-                'description': issue.get('fields', {}).get('description'),
-                # 'name': issue.get('fields', {}).get('summary'),
+                'summary': issue.get('fields', {}).get('summary'),
+                'description': issue.get('fields', {}).get('description').get('content')[0].get('content')[0].get('text'),
+                'status': issue.get('fields', {}).get('status').get('name'),
+                'labels': issue.get('fields', {}).get('labels'),
+                'comments': get_comments_by_id(issue.get('key')),
+                'issuelinks': (
+                    issue.get('fields', {}).get('issuelinks', [])
+                    [0].get('inwardIssue', {}).get('key', '')
+                    if issue.get('fields', {}).get('issuelinks') and len(issue.get('fields', {}).get('issuelinks', [])) > 0
+                    else None
+                ),
+
                 # 'displayName': issue.get('fields', {}).get('assignee', {}).get('displayName')
             }
-            for issue in issues
+            for issue in all_issues  # Process all accumulated issues
         ]
         
         # print(filtered_issues)
-        return filtered_issues
+        return all_issues if get_all else filtered_issues
     except requests.exceptions.RequestException as error:
         print('error: ')
         print(error.response.json().get('errors'))
@@ -241,3 +289,13 @@ def update_status(issue_key, status_id):
 #     issue_key = 'RDKB-6'
 #     status_id = '11'
 #     update_status(issue_key, status_id)
+
+if __name__ == "__main__":
+    issues = get_issues()
+    json_string = json.dumps(issues)
+
+    json_value = json.loads(json_string)
+    with open('issues_all.json', 'w') as file:
+        json.dump(json_value, file, indent=4)
+    print('done!')
+
