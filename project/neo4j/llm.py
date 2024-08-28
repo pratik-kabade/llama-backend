@@ -47,7 +47,7 @@ class LLM:
 
 # Usage example:
 if __name__ == "__main__":
-    llm_model = 'llama3'
-    llm_instance = LLM(llm_model='llama3')
+    llm_model = 'llama2'
+    llm_instance = LLM(llm_model=llm_model)
     llm_instance.rag_model('./data/f1.csv', 'what is first occurence of nanp')
-    llm_instance.get_response('Your query prompt')
+    # llm_instance.get_response('hi')
