@@ -126,53 +126,58 @@ class JiraSetting:
             print(error.response.json().get('errors'))
 
     # Gets all issues in a particular project using the Jira Cloud REST API
-    def get_issues(self, results=10, get_all=False):
+    def get_issues(self, results=10, get_all=False, get_all_details=False):
         try:
             base_url = f'https://{self.domain}.atlassian.net'
             url = f'{base_url}/rest/api/3/search'
             headers = {'Content-Type': 'application/json'}
             start_at = 0
             all_issues = []  # This will accumulate all issues
-            
-            while True:
+
+            # Initial request to get the total number of issues
+            response = requests.get(url, headers=headers, auth=self.auth, params={"startAt": start_at, "maxResults": results})
+            response.raise_for_status()
+            total = response.json().get('total') if get_all else results
+            while start_at < total:
                 params = {
-                    'maxResults': results,
-                    'startAt': start_at
+                    "startAt": start_at,
+                    "maxResults": total,
                 }
                 
                 response = requests.get(url, headers=headers, auth=self.auth, params=params)
                 response.raise_for_status()
                 
                 issues = response.json().get('issues', [])
-                all_issues.extend(issues)  # Extend the list with the new issues
-
-                if len(issues) <= params['maxResults']:
-                    break  # No more issues to fetch
-                start_at += params['maxResults']
-            
+                all_issues.extend(issues) 
+                start_at += 100
+                
             filtered_issues = [
-                # TODO comments, parent
                 {
                     'key': issue.get('key'),
                     'summary': issue.get('fields', {}).get('summary'),
-                    'description': issue.get('fields', {}).get('description').get('content')[0].get('content')[0].get('text'),
-                    'status': issue.get('fields', {}).get('status').get('name'),
-                    'labels': issue.get('fields', {}).get('labels'),
-                    'comments': self.get_comments_by_id(issue.get('key')),
-                    'issuelinks': (
-                        issue.get('fields', {}).get('issuelinks', [])
-                        [0].get('inwardIssue', {}).get('key', '')
-                        if issue.get('fields', {}).get('issuelinks') and len(issue.get('fields', {}).get('issuelinks', [])) > 0
-                        else None
+                    'description': (
+                        issue.get('fields', {}).get('description', {}).get('content', [{}])[0].get('content', [{}])[0].get('text')
+                        if issue.get('fields', {}).get('description') else None
                     ),
-
-                    # 'displayName': issue.get('fields', {}).get('assignee', {}).get('displayName')
+                    'status': issue.get('fields', {}).get('status', {}).get('name'),
+                    'labels': issue.get('fields', {}).get('labels'),
+                    # 'comments': self.get_comments_by_id(issue.get('key')),
+                    'issuelinks': (
+                        issue.get('fields', {}).get('issuelinks', [{}])[0].get('inwardIssue', {}).get('key', '')
+                        if issue.get('fields', {}).get('issuelinks') else None
+                    ),
                 }
                 for issue in all_issues  # Process all accumulated issues
             ]
+
+            filtered_issues2 = []
+            for item in filtered_issues:
+                id=item.get('key').split('-')[0]
+                if id=='RDKB':
+                    filtered_issues2.append(item)
             
-            # print(filtered_issues)
-            return all_issues if get_all else filtered_issues
+            print(len(filtered_issues2))
+            return all_issues if get_all_details else filtered_issues2
         except requests.exceptions.RequestException as error:
             print('error: ')
             print(error.response.json().get('errors'))
@@ -301,7 +306,7 @@ class JiraSetting:
 
 if __name__ == "__main__":
     jira = JiraSetting()
-    issues = jira.get_issues(1)
+    issues = jira.get_issues()
     json_string = json.dumps(issues)
 
     json_value = json.loads(json_string)
