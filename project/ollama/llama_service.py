@@ -18,32 +18,32 @@ def stream_response(prompt):
         'Content-Type': 'application/json',
     }
     data = {
-        'model': 'llama3',
+        'model': 'llama2',
         'prompt': prompt
     }
     try:
         with requests.post(OLLAMA_API_URL, headers=headers, data=json.dumps(data), stream=True) as response:
             response.raise_for_status()
             
-            # Process the streaming response
-            for line in response.iter_lines():
-                if line:
-                    json_res = json.loads(line.decode('utf-8'))
-                    if 'response' in json_res:
-                        yield json_res['response'] + '\n'
-
-            # # Get the response
-            # result = []
+            # # Process the streaming response
             # for line in response.iter_lines():
             #     if line:
             #         json_res = json.loads(line.decode('utf-8'))
             #         if 'response' in json_res:
-            #             result.append(json_res['response'])
-            #             print(json_res['response'], end='', flush=True)
+            #             yield json_res['response'] + '\n'
+
+            # Get the response
+            result = []
+            for line in response.iter_lines():
+                if line:
+                    json_res = json.loads(line.decode('utf-8'))
+                    if 'response' in json_res:
+                        result.append(json_res['response'])
+                        print(json_res['response'], end='', flush=True)
             
-            # # Join all response parts into a single string
-            # final_response = ''.join(result)
-            # return final_response
+            # Join all response parts into a single string
+            final_response = ''.join(result)
+            return final_response
 
     except requests.exceptions.RequestException as e:
         yield f"Error: {e}\n"
