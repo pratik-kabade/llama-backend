@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Chat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        .input-section, .response-section {
+            margin-top: 20px;
+        }
+        .input-box {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .submit-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .response-box {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+            min-height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+        .response-box.loading {
+            background-color: #e0e0e0;
+            animation: pulse 1.5s infinite;
+            color: transparent; /* Hide text while loading */
+        }
+        @keyframes pulse {
+            0% {
+                background-color: #e0e0e0;
+            }
+            50% {
+                background-color: #c0c0c0;
+            }
+            100% {
+                background-color: #e0e0e0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>LLM Chat</h1>
+    
+    <div class="input-section">
+        <h3>Send Prompt to LLM</h3>
+        <input type="text" id="promptInput" class="input-box" placeholder="Enter your prompt here">
+        <button onclick="getLLMResponse()" class="submit-btn">Send</button>
+    </div>
+
+    <div class="response-section">
+        <h3>Response</h3>
+        <div id="responseBox" class="response-box"></div>
+    </div>
+
+    <div class="input-section">
+        <h3>Send RAG Request</h3>
+        <input type="text" id="ragPromptInput" class="input-box" placeholder="Enter RAG prompt">
+        <input type="text" id="fileNameInput" class="input-box" placeholder="Enter file name (e.g., Resume.pdf)">
+        <button onclick="getRAGResponse()" class="submit-btn">Send</button>
+    </div>
+
+</div>
+
+<script>
+    function showLoading() {
+        const responseBox = document.getElementById('responseBox');
+        responseBox.classList.add('loading');
+        responseBox.innerText = "Loading..."; // Optional placeholder text during loading
+    }
+
+    function hideLoading(content) {
+        const responseBox = document.getElementById('responseBox');
+        responseBox.classList.remove('loading');
+        responseBox.innerText = content || "No response received";
+    }
+
+    // Function to send a POST request to get LLM response
+    async function getLLMResponse() {
+        const prompt = document.getElementById('promptInput').value;
+        const responseBox = document.getElementById('responseBox');
+        
+        if (!prompt) {
+            responseBox.innerText = "Please enter a prompt.";
+            return;
+        }
+
+        // Show loading animation
+        showLoading();
+
+        try {
+            const response = await fetch('https://friendly-capybara-g45r4gw7r4pq3wrpg-5000.app.github.dev/api/get-response', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ prompt })
+            });
+
+            if (!response.ok) {
+                hideLoading(`Error: ${response.status} ${response.statusText}`);
+                return;
+            }
+
+            const result = await response.json();
+            hideLoading(result.response);
+
+        } catch (error) {
+            console.error("Error:", error);
+            hideLoading("An error occurred while fetching the response.");
+        }
+    }
+
+    // Function to send a POST request to get RAG model response
+    async function getRAGResponse() {
+        const prompt = document.getElementById('ragPromptInput').value;
+        const fileName = document.getElementById('fileNameInput').value;
+        const responseBox = document.getElementById('responseBox');
+
+        if (!prompt || !fileName) {
+            responseBox.innerText = "Please enter both prompt and file name.";
+            return;
+        }
+
+        // Show loading animation
+        showLoading();
+
+        try {
+            const response = await fetch('https://friendly-capybara-g45r4gw7r4pq3wrpg-5000.app.github.dev/api/get-rag-response', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ prompt, file_name: fileName })
+            });
+
+            if (!response.ok) {
+                hideLoading(`Error: ${response.status} ${response.statusText}`);
+                return;
+            }
+
+            const result = await response.json();
+            hideLoading(result.response);
+
+        } catch (error) {
+            console.error("Error:", error);
+            hideLoading("An error occurred while fetching the response.");
+        }
+    }
+</script>
+
+
+</body>
+</html>

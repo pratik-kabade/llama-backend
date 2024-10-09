@@ -3,6 +3,9 @@ from llm_settings import LLM
 
 app = Flask(__name__)
 
+# cors
+from flask_cors import CORS
+CORS(app)
 
 @app.route('/')
 def home():
@@ -14,7 +17,7 @@ def get_response():
     data = request.json
     prompt = data.get('prompt')
 
-    llm1=LLM(llm_model='llama3')
+    llm1=LLM(llm_model='llama2')
     if not prompt:
         return jsonify({"error": "No prompt provided"}), 400
 
@@ -28,7 +31,7 @@ def get_rag_response():
     file_name = data.get('file_name')
     prompt = data.get('prompt')
 
-    llm1=LLM(llm_model='llama3')
+    llm1=LLM(llm_model='llama2')
     if not prompt:
         return jsonify({"error": "No prompt provided"}), 400
 
