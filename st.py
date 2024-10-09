@@ -12,7 +12,7 @@ if 'input' not in st.session_state:
 # Function to call the API and get a response (streamed token by token)
 def stream_response(user_input):
     try:
-        with requests.post('http://localhost:5000/get-response', json={'prompt': user_input}, stream=True) as response:
+        with requests.post('http://localhost:5000/', json={'prompt': user_input}, stream=True) as response:
             response.raise_for_status()
             bot_response = ""
             for line in response.iter_lines():
@@ -26,7 +26,7 @@ def stream_response(user_input):
 # Function to call the API and get the full response at once
 def get_entire_response(user_input):
     try:
-        response = requests.post('http://localhost:5000/get-entire-response', json={'prompt': user_input})
+        response = requests.post('http://localhost:5000/api/get-response', json={'prompt': user_input})
         response.raise_for_status()
         return response.json().get('response', 'Error: No response from API')
     except Exception as e:

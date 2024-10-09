@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from project.ollama.llm_settings import LLM
+from llm_settings import LLM
 
 app = Flask(__name__)
 
@@ -8,8 +8,8 @@ app = Flask(__name__)
 def home():
     return jsonify({"message": "Server is running"}), 200
 
-@app.route('/api/get-entire-response', methods=['POST'])
-def get_entire_response():
+@app.route('/api/get-response', methods=['POST'])
+def get_response():
     """Returns the entire response at once, either as plain text or JSON."""
     data = request.json
     prompt = data.get('prompt')
@@ -39,5 +39,5 @@ def get_rag_response():
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
 
-# curl -X POST http://127.0.0.1:5000/get-entire-response -H "Content-Type: application/json" -d '{"prompt": "hi"}'
-# curl -X POST http://127.0.0.1:5000/get-rag-response -H "Content-Type: application/json" -d '{"prompt": "what is this document about", "file_name": "Resume.pdf"}'
+# curl -X POST http://127.0.0.1:5000/api/get-response -H "Content-Type: application/json" -d '{"prompt": "hi"}'
+# curl -X POST http://127.0.0.1:5000/api/get-rag-response -H "Content-Type: application/json" -d '{"prompt": "what is this document about", "file_name": "Resume.pdf"}'
