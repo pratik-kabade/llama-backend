@@ -1,0 +1,51 @@
+CustomerID,Feedback,Rating,Date,Service
+1,"Great experience, very satisfied with the service!",5,2024-10-01,Delivery
+2,"Product arrived on time and as described.",4,2024-09-30,Product
+3,"Customer service was prompt and helpful.",5,2024-09-29,Support
+4,"Loved the packaging and quality of the item!",5,2024-09-28,Product
+5,"Very smooth transaction, will buy again.",4,2024-09-27,Delivery
+6,"Friendly and professional staff.",5,2024-09-26,Support
+7,"Excellent quality and worth the price.",4,2024-09-25,Product
+8,"Quick response time and thorough support.",5,2024-09-24,Support
+9,"Highly recommend this service!",5,2024-09-23,Delivery
+10,"Item exceeded expectations.",5,2024-09-22,Product
+11,"Helpful customer support, resolved my issue quickly.",4,2024-09-21,Support
+12,"Very satisfied with the fast delivery.",5,2024-09-20,Delivery
+13,"Product quality is amazing!",5,2024-09-19,Product
+14,"Very polite and helpful staff.",4,2024-09-18,Support
+15,"Delivered on time, great service!",5,2024-09-17,Delivery
+16,"Very pleased with the product quality.",4,2024-09-16,Product
+17,"Great support and friendly team.",5,2024-09-15,Support
+18,"Quick and reliable delivery.",5,2024-09-14,Delivery
+19,"Product met all my expectations.",4,2024-09-13,Product
+20,"Friendly customer service, very satisfied.",5,2024-09-12,Support
+21,"Good experience overall.",4,2024-09-11,Delivery
+22,"Service was fast and efficient.",5,2024-09-10,Delivery
+23,"High-quality product, well-packaged.",4,2024-09-09,Product
+24,"Excellent customer service experience.",5,2024-09-08,Support
+25,"Very prompt delivery and great packaging.",4,2024-09-07,Delivery
+26,"Happy with the purchase, worth the price.",5,2024-09-06,Product
+27,"Customer support was very accommodating.",5,2024-09-05,Support
+28,"Fast delivery, no issues with the order.",4,2024-09-04,Delivery
+29,"High-quality product as advertised.",5,2024-09-03,Product
+30,"Polite and helpful customer support.",4,2024-09-02,Support
+31,"Delivered on time, very satisfied.",5,2024-09-01,Delivery
+32,"The product is top-notch!",5,2024-08-31,Product
+33,"Support was very responsive and friendly.",4,2024-08-30,Support
+34,"Efficient and reliable service.",5,2024-08-29,Delivery
+35,"Excellent quality and fast shipping.",5,2024-08-28,Product
+36,"Friendly and efficient support.",4,2024-08-27,Support
+37,"Package arrived early and intact.",5,2024-08-26,Delivery
+38,"Happy with the quality of the product.",5,2024-08-25,Product
+39,"Prompt and professional customer service.",4,2024-08-24,Support
+40,"Satisfied with the quick delivery.",5,2024-08-23,Delivery
+41,"Product is of excellent quality.",5,2024-08-22,Product
+42,"Helpful and friendly support team.",4,2024-08-21,Support
+43,"Delivery was faster than expected.",5,2024-08-20,Delivery
+44,"The product quality exceeded expectations.",5,2024-08-19,Product
+45,"Great support, very accommodating.",4,2024-08-18,Support
+46,"Quick delivery and well-packaged.",5,2024-08-17,Delivery
+47,"Good quality product and service.",5,2024-08-16,Product
+48,"Very friendly customer service.",4,2024-08-15,Support
+49,"Delivery was smooth and fast.",5,2024-08-14,Delivery
+50,"Product is perfect, no complaints!",5,2024-08-13,Product

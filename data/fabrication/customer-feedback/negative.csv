@@ -1,0 +1,51 @@
+CustomerID,Feedback,Rating,Date,Service
+1,"Very disappointed with the service, took too long.",1,2024-10-01,Delivery
+2,"Product was damaged when it arrived.",2,2024-09-30,Product
+3,"Customer service was unresponsive.",1,2024-09-29,Support
+4,"Poor quality, not worth the price.",2,2024-09-28,Product
+5,"Delivery was late, very inconvenient.",1,2024-09-27,Delivery
+6,"Rude customer support, not helpful at all.",1,2024-09-26,Support
+7,"Product did not meet my expectations.",2,2024-09-25,Product
+8,"Slow response time from customer support.",1,2024-09-24,Support
+9,"Would not recommend this service.",1,2024-09-23,Delivery
+10,"The product quality was disappointing.",2,2024-09-22,Product
+11,"Customer support did not resolve my issue.",1,2024-09-21,Support
+12,"Delivery took much longer than expected.",1,2024-09-20,Delivery
+13,"Low-quality product, not satisfied.",2,2024-09-19,Product
+14,"Support team was not polite or helpful.",1,2024-09-18,Support
+15,"Late delivery, poor service.",1,2024-09-17,Delivery
+16,"Product quality was subpar.",2,2024-09-16,Product
+17,"Unfriendly and unhelpful support.",1,2024-09-15,Support
+18,"Delivery service was unreliable.",1,2024-09-14,Delivery
+19,"Product failed to meet expectations.",2,2024-09-13,Product
+20,"Customer service was not accommodating.",1,2024-09-12,Support
+21,"Overall, a bad experience.",1,2024-09-11,Delivery
+22,"Service was slow and inefficient.",1,2024-09-10,Delivery
+23,"Product arrived in poor condition.",2,2024-09-09,Product
+24,"Had a terrible customer service experience.",1,2024-09-08,Support
+25,"Delivery was delayed, poor communication.",1,2024-09-07,Delivery
+26,"Disappointed with the product quality.",2,2024-09-06,Product
+27,"Customer support was uncooperative.",1,2024-09-05,Support
+28,"Order was delayed with no explanation.",1,2024-09-04,Delivery
+29,"Product quality was not as advertised.",2,2024-09-03,Product
+30,"Customer support was rude.",1,2024-09-02,Support
+31,"Delivery was extremely late.",1,2024-09-01,Delivery
+32,"Poor quality product.",2,2024-08-31,Product
+33,"Support was unresponsive and unhelpful.",1,2024-08-30,Support
+34,"Inefficient and unreliable service.",1,2024-08-29,Delivery
+35,"Product arrived in terrible condition.",2,2024-08-28,Product
+36,"Support team was rude and unhelpful.",1,2024-08-27,Support
+37,"Delivery was very late.",1,2024-08-26,Delivery
+38,"Dissatisfied with the quality of the product.",2,2024-08-25,Product
+39,"Customer service was rude and slow.",1,2024-08-24,Support
+40,"Delivery was not timely.",1,2024-08-23,Delivery
+41,"Low-quality product, not happy.",2,2024-08-22,Product
+42,"Customer support was rude and dismissive.",1,2024-08-21,Support
+43,"Delivery arrived way too late.",1,2024-08-20,Delivery
+44,"Product quality was disappointing.",2,2024-08-19,Product
+45,"Unfriendly and unhelpful support team.",1,2024-08-18,Support
+46,"Late delivery, poorly managed.",1,2024-08-17,Delivery
+47,"Poor quality product and service.",2,2024-08-16,Product
+48,"Rude customer service.",1,2024-08-15,Support
+49,"Delivery was very delayed.",1,2024-08-14,Delivery
+50,"Product did not meet quality expectations.",2,2024-08-13,Product

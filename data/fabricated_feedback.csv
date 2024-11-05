@@ -1,0 +1,1001 @@
+CustomerID,Feedback,Rating,Date,Service,Source
+23,"High-quality product, well-packaged.",4,2024-09-09,Product,POSITIVE
+9,Highly recommend this service!,5,2024-09-23,Delivery,POSITIVE
+39,Prompt and professional customer service.,4,2024-08-24,Support,POSITIVE
+4,"Poor quality, not worth the price.",2,2024-09-28,Product,NEGATIVE
+16,Product quality was subpar.,2,2024-09-16,Product,NEGATIVE
+36,Support team was rude and unhelpful.,1,2024-08-27,Support,NEGATIVE
+33,Support was unresponsive and unhelpful.,1,2024-08-30,Support,NEGATIVE
+3,Customer service was unresponsive.,1,2024-09-29,Support,NEGATIVE
+22,Service was slow and inefficient.,1,2024-09-10,Delivery,NEGATIVE
+3,Customer service was unresponsive.,1,2024-09-29,Support,NEGATIVE
+49,Delivery was smooth and fast.,5,2024-08-14,Delivery,POSITIVE
+9,Would not recommend this service.,1,2024-09-23,Delivery,NEGATIVE
+39,Customer service was rude and slow.,1,2024-08-24,Support,NEGATIVE
+48,Very friendly customer service.,4,2024-08-15,Support,POSITIVE
+7,Excellent quality and worth the price.,4,2024-09-25,Product,POSITIVE
+35,Product arrived in terrible condition.,2,2024-08-28,Product,NEGATIVE
+1,"Very disappointed with the service, took too long.",1,2024-10-01,Delivery,NEGATIVE
+18,Delivery service was unreliable.,1,2024-09-14,Delivery,NEGATIVE
+33,Support was very responsive and friendly.,4,2024-08-30,Support,POSITIVE
+12,Delivery took much longer than expected.,1,2024-09-20,Delivery,NEGATIVE
+30,Customer support was rude.,1,2024-09-02,Support,NEGATIVE
+12,Very satisfied with the fast delivery.,5,2024-09-20,Delivery,POSITIVE
+32,Poor quality product.,2,2024-08-31,Product,NEGATIVE
+38,Happy with the quality of the product.,5,2024-08-25,Product,POSITIVE
+19,Product met all my expectations.,4,2024-09-13,Product,POSITIVE
+26,"Happy with the purchase, worth the price.",5,2024-09-06,Product,POSITIVE
+15,"Late delivery, poor service.",1,2024-09-17,Delivery,NEGATIVE
+9,Highly recommend this service!,5,2024-09-23,Delivery,POSITIVE
+3,Customer service was unresponsive.,1,2024-09-29,Support,NEGATIVE
+27,Customer support was uncooperative.,1,2024-09-05,Support,NEGATIVE
+8,Slow response time from customer support.,1,2024-09-24,Support,NEGATIVE
+22,Service was fast and efficient.,5,2024-09-10,Delivery,POSITIVE
+8,Quick response time and thorough support.,5,2024-09-24,Support,POSITIVE
+1,"Very disappointed with the service, took too long.",1,2024-10-01,Delivery,NEGATIVE
+5,"Delivery was late, very inconvenient.",1,2024-09-27,Delivery,NEGATIVE
+28,Order was delayed with no explanation.,1,2024-09-04,Delivery,NEGATIVE
+21,Good experience overall.,4,2024-09-11,Delivery,POSITIVE
+37,Delivery was very late.,1,2024-08-26,Delivery,NEGATIVE
+15,"Delivered on time, great service!",5,2024-09-17,Delivery,POSITIVE
+10,Item exceeded expectations.,5,2024-09-22,Product,POSITIVE
+48,Very friendly customer service.,4,2024-08-15,Support,POSITIVE
+3,Customer service was unresponsive.,1,2024-09-29,Support,NEGATIVE
+40,Satisfied with the quick delivery.,5,2024-08-23,Delivery,POSITIVE
+14,Very polite and helpful staff.,4,2024-09-18,Support,POSITIVE
+45,"Great support, very accommodating.",4,2024-08-18,Support,POSITIVE
+6,Friendly and professional staff.,5,2024-09-26,Support,POSITIVE
+1,"Great experience, very satisfied with the service!",5,2024-10-01,Delivery,POSITIVE
+48,Very friendly customer service.,4,2024-08-15,Support,POSITIVE
+44,Product quality was disappointing.,2,2024-08-19,Product,NEGATIVE
+6,"Rude customer support, not helpful at all.",1,2024-09-26,Support,NEGATIVE
+13,Product quality is amazing!,5,2024-09-19,Product,POSITIVE
+24,Excellent customer service experience.,5,2024-09-08,Support,POSITIVE
+26,"Happy with the purchase, worth the price.",5,2024-09-06,Product,POSITIVE
+41,"Low-quality product, not happy.",2,2024-08-22,Product,NEGATIVE
+19,Product failed to meet expectations.,2,2024-09-13,Product,NEGATIVE
+2,Product was damaged when it arrived.,2,2024-09-30,Product,NEGATIVE
+46,"Late delivery, poorly managed.",1,2024-08-17,Delivery,NEGATIVE
+38,Happy with the quality of the product.,5,2024-08-25,Product,POSITIVE
+19,Product met all my expectations.,4,2024-09-13,Product,POSITIVE
+17,Unfriendly and unhelpful support.,1,2024-09-15,Support,NEGATIVE
+31,Delivery was extremely late.,1,2024-09-01,Delivery,NEGATIVE
+7,Excellent quality and worth the price.,4,2024-09-25,Product,POSITIVE
+44,The product quality exceeded expectations.,5,2024-08-19,Product,POSITIVE
+16,Product quality was subpar.,2,2024-09-16,Product,NEGATIVE
+42,Customer support was rude and dismissive.,1,2024-08-21,Support,NEGATIVE
+16,Very pleased with the product quality.,4,2024-09-16,Product,POSITIVE
+11,"Helpful customer support, resolved my issue quickly.",4,2024-09-21,Support,POSITIVE
+8,Quick response time and thorough support.,5,2024-09-24,Support,POSITIVE
+12,Very satisfied with the fast delivery.,5,2024-09-20,Delivery,POSITIVE
+41,"Low-quality product, not happy.",2,2024-08-22,Product,NEGATIVE
+28,Order was delayed with no explanation.,1,2024-09-04,Delivery,NEGATIVE
+13,Product quality is amazing!,5,2024-09-19,Product,POSITIVE
+46,Quick delivery and well-packaged.,5,2024-08-17,Delivery,POSITIVE
+10,Item exceeded expectations.,5,2024-09-22,Product,POSITIVE
+29,High-quality product as advertised.,5,2024-09-03,Product,POSITIVE
+38,Dissatisfied with the quality of the product.,2,2024-08-25,Product,NEGATIVE
+17,Great support and friendly team.,5,2024-09-15,Support,POSITIVE
+30,Customer support was rude.,1,2024-09-02,Support,NEGATIVE
+38,Happy with the quality of the product.,5,2024-08-25,Product,POSITIVE
+33,Support was unresponsive and unhelpful.,1,2024-08-30,Support,NEGATIVE
+24,Had a terrible customer service experience.,1,2024-09-08,Support,NEGATIVE
+28,"Fast delivery, no issues with the order.",4,2024-09-04,Delivery,POSITIVE
+49,Delivery was smooth and fast.,5,2024-08-14,Delivery,POSITIVE
+44,The product quality exceeded expectations.,5,2024-08-19,Product,POSITIVE
+15,"Delivered on time, great service!",5,2024-09-17,Delivery,POSITIVE
+31,"Delivered on time, very satisfied.",5,2024-09-01,Delivery,POSITIVE
+21,Good experience overall.,4,2024-09-11,Delivery,POSITIVE
+35,Product arrived in terrible condition.,2,2024-08-28,Product,NEGATIVE
+48,Rude customer service.,1,2024-08-15,Support,NEGATIVE
+23,Product arrived in poor condition.,2,2024-09-09,Product,NEGATIVE
+6,Friendly and professional staff.,5,2024-09-26,Support,POSITIVE
+22,Service was slow and inefficient.,1,2024-09-10,Delivery,NEGATIVE
+36,Support team was rude and unhelpful.,1,2024-08-27,Support,NEGATIVE
+11,Customer support did not resolve my issue.,1,2024-09-21,Support,NEGATIVE
+47,Good quality product and service.,5,2024-08-16,Product,POSITIVE
+7,Product did not meet my expectations.,2,2024-09-25,Product,NEGATIVE
+41,"Low-quality product, not happy.",2,2024-08-22,Product,NEGATIVE
+36,Support team was rude and unhelpful.,1,2024-08-27,Support,NEGATIVE
+12,Very satisfied with the fast delivery.,5,2024-09-20,Delivery,POSITIVE
+22,Service was fast and efficient.,5,2024-09-10,Delivery,POSITIVE
+7,Product did not meet my expectations.,2,2024-09-25,Product,NEGATIVE
+41,Product is of excellent quality.,5,2024-08-22,Product,POSITIVE
+29,Product quality was not as advertised.,2,2024-09-03,Product,NEGATIVE
+14,Support team was not polite or helpful.,1,2024-09-18,Support,NEGATIVE
+44,Product quality was disappointing.,2,2024-08-19,Product,NEGATIVE
+13,"Low-quality product, not satisfied.",2,2024-09-19,Product,NEGATIVE
+29,High-quality product as advertised.,5,2024-09-03,Product,POSITIVE
+25,Very prompt delivery and great packaging.,4,2024-09-07,Delivery,POSITIVE
+25,Very prompt delivery and great packaging.,4,2024-09-07,Delivery,POSITIVE
+29,High-quality product as advertised.,5,2024-09-03,Product,POSITIVE
+36,Support team was rude and unhelpful.,1,2024-08-27,Support,NEGATIVE
+37,Package arrived early and intact.,5,2024-08-26,Delivery,POSITIVE
+29,High-quality product as advertised.,5,2024-09-03,Product,POSITIVE
+17,Great support and friendly team.,5,2024-09-15,Support,POSITIVE
+20,"Friendly customer service, very satisfied.",5,2024-09-12,Support,POSITIVE
+46,Quick delivery and well-packaged.,5,2024-08-17,Delivery,POSITIVE
+16,Very pleased with the product quality.,4,2024-09-16,Product,POSITIVE
+35,Excellent quality and fast shipping.,5,2024-08-28,Product,POSITIVE
+1,"Very disappointed with the service, took too long.",1,2024-10-01,Delivery,NEGATIVE
+7,Product did not meet my expectations.,2,2024-09-25,Product,NEGATIVE
+26,"Happy with the purchase, worth the price.",5,2024-09-06,Product,POSITIVE
+42,Helpful and friendly support team.,4,2024-08-21,Support,POSITIVE
+9,Would not recommend this service.,1,2024-09-23,Delivery,NEGATIVE
+45,Unfriendly and unhelpful support team.,1,2024-08-18,Support,NEGATIVE
+2,Product arrived on time and as described.,4,2024-09-30,Product,POSITIVE
+45,"Great support, very accommodating.",4,2024-08-18,Support,POSITIVE
+4,Loved the packaging and quality of the item!,5,2024-09-28,Product,POSITIVE
+20,"Friendly customer service, very satisfied.",5,2024-09-12,Support,POSITIVE
+37,Delivery was very late.,1,2024-08-26,Delivery,NEGATIVE
+40,Delivery was not timely.,1,2024-08-23,Delivery,NEGATIVE
+1,"Great experience, very satisfied with the service!",5,2024-10-01,Delivery,POSITIVE
+23,"High-quality product, well-packaged.",4,2024-09-09,Product,POSITIVE
+49,Delivery was smooth and fast.,5,2024-08-14,Delivery,POSITIVE
+20,Customer service was not accommodating.,1,2024-09-12,Support,NEGATIVE
+30,Customer support was rude.,1,2024-09-02,Support,NEGATIVE
+35,Excellent quality and fast shipping.,5,2024-08-28,Product,POSITIVE
+18,Quick and reliable delivery.,5,2024-09-14,Delivery,POSITIVE
+25,Very prompt delivery and great packaging.,4,2024-09-07,Delivery,POSITIVE
+23,"High-quality product, well-packaged.",4,2024-09-09,Product,POSITIVE
+36,Friendly and efficient support.,4,2024-08-27,Support,POSITIVE
+49,Delivery was smooth and fast.,5,2024-08-14,Delivery,POSITIVE
+25,Very prompt delivery and great packaging.,4,2024-09-07,Delivery,POSITIVE
+15,"Delivered on time, great service!",5,2024-09-17,Delivery,POSITIVE
+31,"Delivered on time, very satisfied.",5,2024-09-01,Delivery,POSITIVE
+49,Delivery was very delayed.,1,2024-08-14,Delivery,NEGATIVE
+26,"Happy with the purchase, worth the price.",5,2024-09-06,Product,POSITIVE
+9,Highly recommend this service!,5,2024-09-23,Delivery,POSITIVE
+31,Delivery was extremely late.,1,2024-09-01,Delivery,NEGATIVE
+40,Satisfied with the quick delivery.,5,2024-08-23,Delivery,POSITIVE
+22,Service was fast and efficient.,5,2024-09-10,Delivery,POSITIVE
+28,"Fast delivery, no issues with the order.",4,2024-09-04,Delivery,POSITIVE
+10,The product quality was disappointing.,2,2024-09-22,Product,NEGATIVE
+29,Product quality was not as advertised.,2,2024-09-03,Product,NEGATIVE
+41,Product is of excellent quality.,5,2024-08-22,Product,POSITIVE
+48,Very friendly customer service.,4,2024-08-15,Support,POSITIVE
+2,Product arrived on time and as described.,4,2024-09-30,Product,POSITIVE
+30,Polite and helpful customer support.,4,2024-09-02,Support,POSITIVE
+47,Good quality product and service.,5,2024-08-16,Product,POSITIVE
+49,Delivery was very delayed.,1,2024-08-14,Delivery,NEGATIVE
+47,Poor quality product and service.,2,2024-08-16,Product,NEGATIVE
+15,"Delivered on time, great service!",5,2024-09-17,Delivery,POSITIVE
+47,Poor quality product and service.,2,2024-08-16,Product,NEGATIVE
+44,The product quality exceeded expectations.,5,2024-08-19,Product,POSITIVE
+45,"Great support, very accommodating.",4,2024-08-18,Support,POSITIVE
+10,The product quality was disappointing.,2,2024-09-22,Product,NEGATIVE
+28,Order was delayed with no explanation.,1,2024-09-04,Delivery,NEGATIVE
+12,Very satisfied with the fast delivery.,5,2024-09-20,Delivery,POSITIVE
+11,"Helpful customer support, resolved my issue quickly.",4,2024-09-21,Support,POSITIVE
+9,Highly recommend this service!,5,2024-09-23,Delivery,POSITIVE
+23,"High-quality product, well-packaged.",4,2024-09-09,Product,POSITIVE
+29,High-quality product as advertised.,5,2024-09-03,Product,POSITIVE
+13,Product quality is amazing!,5,2024-09-19,Product,POSITIVE
+14,Support team was not polite or helpful.,1,2024-09-18,Support,NEGATIVE
+43,Delivery was faster than expected.,5,2024-08-20,Delivery,POSITIVE
+46,Quick delivery and well-packaged.,5,2024-08-17,Delivery,POSITIVE
+21,Good experience overall.,4,2024-09-11,Delivery,POSITIVE
+42,Helpful and friendly support team.,4,2024-08-21,Support,POSITIVE
+16,Very pleased with the product quality.,4,2024-09-16,Product,POSITIVE
+2,Product arrived on time and as described.,4,2024-09-30,Product,POSITIVE
+30,Customer support was rude.,1,2024-09-02,Support,NEGATIVE
+7,Product did not meet my expectations.,2,2024-09-25,Product,NEGATIVE
+43,Delivery was faster than expected.,5,2024-08-20,Delivery,POSITIVE
+11,"Helpful customer support, resolved my issue quickly.",4,2024-09-21,Support,POSITIVE
+3,Customer service was prompt and helpful.,5,2024-09-29,Support,POSITIVE
+22,Service was fast and efficient.,5,2024-09-10,Delivery,POSITIVE
+2,Product was damaged when it arrived.,2,2024-09-30,Product,NEGATIVE
+46,"Late delivery, poorly managed.",1,2024-08-17,Delivery,NEGATIVE
+38,Dissatisfied with the quality of the product.,2,2024-08-25,Product,NEGATIVE
+40,Satisfied with the quick delivery.,5,2024-08-23,Delivery,POSITIVE
+29,High-quality product as advertised.,5,2024-09-03,Product,POSITIVE
+3,Customer service was unresponsive.,1,2024-09-29,Support,NEGATIVE
+24,Excellent customer service experience.,5,2024-09-08,Support,POSITIVE
+17,Great support and friendly team.,5,2024-09-15,Support,POSITIVE
+25,Very prompt delivery and great packaging.,4,2024-09-07,Delivery,POSITIVE
+16,Very pleased with the product quality.,4,2024-09-16,Product,POSITIVE
+26,Disappointed with the product quality.,2,2024-09-06,Product,NEGATIVE
+39,Customer service was rude and slow.,1,2024-08-24,Support,NEGATIVE
+2,Product was damaged when it arrived.,2,2024-09-30,Product,NEGATIVE
+9,Would not recommend this service.,1,2024-09-23,Delivery,NEGATIVE
+7,Excellent quality and worth the price.,4,2024-09-25,Product,POSITIVE
+45,"Great support, very accommodating.",4,2024-08-18,Support,POSITIVE
+34,Inefficient and unreliable service.,1,2024-08-29,Delivery,NEGATIVE
+37,Delivery was very late.,1,2024-08-26,Delivery,NEGATIVE
+27,Customer support was very accommodating.,5,2024-09-05,Support,POSITIVE
+20,"Friendly customer service, very satisfied.",5,2024-09-12,Support,POSITIVE
+22,Service was fast and efficient.,5,2024-09-10,Delivery,POSITIVE
+15,"Late delivery, poor service.",1,2024-09-17,Delivery,NEGATIVE
+34,Efficient and reliable service.,5,2024-08-29,Delivery,POSITIVE
+44,The product quality exceeded expectations.,5,2024-08-19,Product,POSITIVE
+40,Delivery was not timely.,1,2024-08-23,Delivery,NEGATIVE
+25,Very prompt delivery and great packaging.,4,2024-09-07,Delivery,POSITIVE
+5,"Very smooth transaction, will buy again.",4,2024-09-27,Delivery,POSITIVE
+42,Customer support was rude and dismissive.,1,2024-08-21,Support,NEGATIVE
+45,"Great support, very accommodating.",4,2024-08-18,Support,POSITIVE
+4,"Poor quality, not worth the price.",2,2024-09-28,Product,NEGATIVE
+25,"Delivery was delayed, poor communication.",1,2024-09-07,Delivery,NEGATIVE
+11,"Helpful customer support, resolved my issue quickly.",4,2024-09-21,Support,POSITIVE
+23,"High-quality product, well-packaged.",4,2024-09-09,Product,POSITIVE
+49,Delivery was smooth and fast.,5,2024-08-14,Delivery,POSITIVE
+6,Friendly and professional staff.,5,2024-09-26,Support,POSITIVE
+20,"Friendly customer service, very satisfied.",5,2024-09-12,Support,POSITIVE
+50,Product did not meet quality expectations.,2,2024-08-13,Product,NEGATIVE
+41,Product is of excellent quality.,5,2024-08-22,Product,POSITIVE
+21,"Overall, a bad experience.",1,2024-09-11,Delivery,NEGATIVE
+44,The product quality exceeded expectations.,5,2024-08-19,Product,POSITIVE
+18,Quick and reliable delivery.,5,2024-09-14,Delivery,POSITIVE
+13,"Low-quality product, not satisfied.",2,2024-09-19,Product,NEGATIVE
+18,Quick and reliable delivery.,5,2024-09-14,Delivery,POSITIVE
+16,Product quality was subpar.,2,2024-09-16,Product,NEGATIVE
+17,Great support and friendly team.,5,2024-09-15,Support,POSITIVE
+20,Customer service was not accommodating.,1,2024-09-12,Support,NEGATIVE
+23,Product arrived in poor condition.,2,2024-09-09,Product,NEGATIVE
+49,Delivery was very delayed.,1,2024-08-14,Delivery,NEGATIVE
+47,Good quality product and service.,5,2024-08-16,Product,POSITIVE
+16,Very pleased with the product quality.,4,2024-09-16,Product,POSITIVE
+47,Good quality product and service.,5,2024-08-16,Product,POSITIVE
+16,Very pleased with the product quality.,4,2024-09-16,Product,POSITIVE
+38,Happy with the quality of the product.,5,2024-08-25,Product,POSITIVE
+2,Product was damaged when it arrived.,2,2024-09-30,Product,NEGATIVE
+37,Package arrived early and intact.,5,2024-08-26,Delivery,POSITIVE
+47,Good quality product and service.,5,2024-08-16,Product,POSITIVE
+9,Highly recommend this service!,5,2024-09-23,Delivery,POSITIVE
+32,Poor quality product.,2,2024-08-31,Product,NEGATIVE
+35,Excellent quality and fast shipping.,5,2024-08-28,Product,POSITIVE
+17,Great support and friendly team.,5,2024-09-15,Support,POSITIVE
+19,Product met all my expectations.,4,2024-09-13,Product,POSITIVE
+39,Customer service was rude and slow.,1,2024-08-24,Support,NEGATIVE
+28,"Fast delivery, no issues with the order.",4,2024-09-04,Delivery,POSITIVE
+21,Good experience overall.,4,2024-09-11,Delivery,POSITIVE
+9,Highly recommend this service!,5,2024-09-23,Delivery,POSITIVE
+15,"Delivered on time, great service!",5,2024-09-17,Delivery,POSITIVE
+29,High-quality product as advertised.,5,2024-09-03,Product,POSITIVE
+12,Very satisfied with the fast delivery.,5,2024-09-20,Delivery,POSITIVE
+13,"Low-quality product, not satisfied.",2,2024-09-19,Product,NEGATIVE
+19,Product failed to meet expectations.,2,2024-09-13,Product,NEGATIVE
+33,Support was unresponsive and unhelpful.,1,2024-08-30,Support,NEGATIVE
+40,Satisfied with the quick delivery.,5,2024-08-23,Delivery,POSITIVE
+20,"Friendly customer service, very satisfied.",5,2024-09-12,Support,POSITIVE
+18,Quick and reliable delivery.,5,2024-09-14,Delivery,POSITIVE
+9,Would not recommend this service.,1,2024-09-23,Delivery,NEGATIVE
+13,Product quality is amazing!,5,2024-09-19,Product,POSITIVE
+3,Customer service was prompt and helpful.,5,2024-09-29,Support,POSITIVE
+29,Product quality was not as advertised.,2,2024-09-03,Product,NEGATIVE
+45,"Great support, very accommodating.",4,2024-08-18,Support,POSITIVE
+49,Delivery was very delayed.,1,2024-08-14,Delivery,NEGATIVE
+37,Delivery was very late.,1,2024-08-26,Delivery,NEGATIVE
+38,Dissatisfied with the quality of the product.,2,2024-08-25,Product,NEGATIVE
+15,"Delivered on time, great service!",5,2024-09-17,Delivery,POSITIVE
+42,Helpful and friendly support team.,4,2024-08-21,Support,POSITIVE
+5,"Very smooth transaction, will buy again.",4,2024-09-27,Delivery,POSITIVE
+40,Satisfied with the quick delivery.,5,2024-08-23,Delivery,POSITIVE
+30,Polite and helpful customer support.,4,2024-09-02,Support,POSITIVE
+33,Support was very responsive and friendly.,4,2024-08-30,Support,POSITIVE
+26,"Happy with the purchase, worth the price.",5,2024-09-06,Product,POSITIVE
+25,Very prompt delivery and great packaging.,4,2024-09-07,Delivery,POSITIVE
+1,"Great experience, very satisfied with the service!",5,2024-10-01,Delivery,POSITIVE
+33,Support was unresponsive and unhelpful.,1,2024-08-30,Support,NEGATIVE
+21,Good experience overall.,4,2024-09-11,Delivery,POSITIVE
+29,High-quality product as advertised.,5,2024-09-03,Product,POSITIVE
+31,"Delivered on time, very satisfied.",5,2024-09-01,Delivery,POSITIVE
+45,Unfriendly and unhelpful support team.,1,2024-08-18,Support,NEGATIVE
+36,Support team was rude and unhelpful.,1,2024-08-27,Support,NEGATIVE
+43,Delivery was faster than expected.,5,2024-08-20,Delivery,POSITIVE
+33,Support was very responsive and friendly.,4,2024-08-30,Support,POSITIVE
+23,"High-quality product, well-packaged.",4,2024-09-09,Product,POSITIVE
+19,Product met all my expectations.,4,2024-09-13,Product,POSITIVE
+1,"Great experience, very satisfied with the service!",5,2024-10-01,Delivery,POSITIVE
+49,Delivery was smooth and fast.,5,2024-08-14,Delivery,POSITIVE
+25,Very prompt delivery and great packaging.,4,2024-09-07,Delivery,POSITIVE
+6,Friendly and professional staff.,5,2024-09-26,Support,POSITIVE
+11,"Helpful customer support, resolved my issue quickly.",4,2024-09-21,Support,POSITIVE
+4,"Poor quality, not worth the price.",2,2024-09-28,Product,NEGATIVE
+33,Support was very responsive and friendly.,4,2024-08-30,Support,POSITIVE
+24,Excellent customer service experience.,5,2024-09-08,Support,POSITIVE
+35,Product arrived in terrible condition.,2,2024-08-28,Product,NEGATIVE
+35,Product arrived in terrible condition.,2,2024-08-28,Product,NEGATIVE
+8,Quick response time and thorough support.,5,2024-09-24,Support,POSITIVE
+8,Slow response time from customer support.,1,2024-09-24,Support,NEGATIVE
+34,Efficient and reliable service.,5,2024-08-29,Delivery,POSITIVE
+44,The product quality exceeded expectations.,5,2024-08-19,Product,POSITIVE
+38,Dissatisfied with the quality of the product.,2,2024-08-25,Product,NEGATIVE
+5,"Delivery was late, very inconvenient.",1,2024-09-27,Delivery,NEGATIVE
+37,Package arrived early and intact.,5,2024-08-26,Delivery,POSITIVE
+47,Good quality product and service.,5,2024-08-16,Product,POSITIVE
+24,Excellent customer service experience.,5,2024-09-08,Support,POSITIVE
+48,Rude customer service.,1,2024-08-15,Support,NEGATIVE
+40,Delivery was not timely.,1,2024-08-23,Delivery,NEGATIVE
+4,Loved the packaging and quality of the item!,5,2024-09-28,Product,POSITIVE
+34,Efficient and reliable service.,5,2024-08-29,Delivery,POSITIVE
+22,Service was slow and inefficient.,1,2024-09-10,Delivery,NEGATIVE
+49,Delivery was smooth and fast.,5,2024-08-14,Delivery,POSITIVE
+22,Service was slow and inefficient.,1,2024-09-10,Delivery,NEGATIVE
+26,"Happy with the purchase, worth the price.",5,2024-09-06,Product,POSITIVE
+33,Support was unresponsive and unhelpful.,1,2024-08-30,Support,NEGATIVE
+14,Very polite and helpful staff.,4,2024-09-18,Support,POSITIVE
+36,Support team was rude and unhelpful.,1,2024-08-27,Support,NEGATIVE
+28,Order was delayed with no explanation.,1,2024-09-04,Delivery,NEGATIVE
+18,Quick and reliable delivery.,5,2024-09-14,Delivery,POSITIVE
+19,Product met all my expectations.,4,2024-09-13,Product,POSITIVE
+43,Delivery arrived way too late.,1,2024-08-20,Delivery,NEGATIVE
+17,Great support and friendly team.,5,2024-09-15,Support,POSITIVE
+29,Product quality was not as advertised.,2,2024-09-03,Product,NEGATIVE
+40,Delivery was not timely.,1,2024-08-23,Delivery,NEGATIVE
+38,Happy with the quality of the product.,5,2024-08-25,Product,POSITIVE
+45,"Great support, very accommodating.",4,2024-08-18,Support,POSITIVE
+12,Very satisfied with the fast delivery.,5,2024-09-20,Delivery,POSITIVE
+17,Great support and friendly team.,5,2024-09-15,Support,POSITIVE
+16,Product quality was subpar.,2,2024-09-16,Product,NEGATIVE
+21,Good experience overall.,4,2024-09-11,Delivery,POSITIVE
+4,"Poor quality, not worth the price.",2,2024-09-28,Product,NEGATIVE
+40,Delivery was not timely.,1,2024-08-23,Delivery,NEGATIVE
+33,Support was unresponsive and unhelpful.,1,2024-08-30,Support,NEGATIVE
+46,"Late delivery, poorly managed.",1,2024-08-17,Delivery,NEGATIVE
+20,Customer service was not accommodating.,1,2024-09-12,Support,NEGATIVE
+49,Delivery was smooth and fast.,5,2024-08-14,Delivery,POSITIVE
+6,"Rude customer support, not helpful at all.",1,2024-09-26,Support,NEGATIVE
+10,The product quality was disappointing.,2,2024-09-22,Product,NEGATIVE
+27,Customer support was uncooperative.,1,2024-09-05,Support,NEGATIVE
+5,"Very smooth transaction, will buy again.",4,2024-09-27,Delivery,POSITIVE
+50,Product did not meet quality expectations.,2,2024-08-13,Product,NEGATIVE
+7,Product did not meet my expectations.,2,2024-09-25,Product,NEGATIVE
+38,Dissatisfied with the quality of the product.,2,2024-08-25,Product,NEGATIVE
+31,"Delivered on time, very satisfied.",5,2024-09-01,Delivery,POSITIVE
+27,Customer support was very accommodating.,5,2024-09-05,Support,POSITIVE
+1,"Great experience, very satisfied with the service!",5,2024-10-01,Delivery,POSITIVE
+30,Customer support was rude.,1,2024-09-02,Support,NEGATIVE
+34,Efficient and reliable service.,5,2024-08-29,Delivery,POSITIVE
+5,"Very smooth transaction, will buy again.",4,2024-09-27,Delivery,POSITIVE
+45,Unfriendly and unhelpful support team.,1,2024-08-18,Support,NEGATIVE
+22,Service was fast and efficient.,5,2024-09-10,Delivery,POSITIVE
+35,Excellent quality and fast shipping.,5,2024-08-28,Product,POSITIVE
+43,Delivery arrived way too late.,1,2024-08-20,Delivery,NEGATIVE
+24,Excellent customer service experience.,5,2024-09-08,Support,POSITIVE
+31,Delivery was extremely late.,1,2024-09-01,Delivery,NEGATIVE
+25,"Delivery was delayed, poor communication.",1,2024-09-07,Delivery,NEGATIVE
+3,Customer service was unresponsive.,1,2024-09-29,Support,NEGATIVE
+47,Good quality product and service.,5,2024-08-16,Product,POSITIVE
+6,Friendly and professional staff.,5,2024-09-26,Support,POSITIVE
+25,"Delivery was delayed, poor communication.",1,2024-09-07,Delivery,NEGATIVE
+6,"Rude customer support, not helpful at all.",1,2024-09-26,Support,NEGATIVE
+5,"Very smooth transaction, will buy again.",4,2024-09-27,Delivery,POSITIVE
+21,Good experience overall.,4,2024-09-11,Delivery,POSITIVE
+5,"Very smooth transaction, will buy again.",4,2024-09-27,Delivery,POSITIVE
+18,Quick and reliable delivery.,5,2024-09-14,Delivery,POSITIVE
+35,Product arrived in terrible condition.,2,2024-08-28,Product,NEGATIVE
+37,Package arrived early and intact.,5,2024-08-26,Delivery,POSITIVE
+38,Happy with the quality of the product.,5,2024-08-25,Product,POSITIVE
+13,Product quality is amazing!,5,2024-09-19,Product,POSITIVE
+24,Had a terrible customer service experience.,1,2024-09-08,Support,NEGATIVE
+13,Product quality is amazing!,5,2024-09-19,Product,POSITIVE
+26,Disappointed with the product quality.,2,2024-09-06,Product,NEGATIVE
+42,Helpful and friendly support team.,4,2024-08-21,Support,POSITIVE
+28,Order was delayed with no explanation.,1,2024-09-04,Delivery,NEGATIVE
+36,Friendly and efficient support.,4,2024-08-27,Support,POSITIVE
+24,Excellent customer service experience.,5,2024-09-08,Support,POSITIVE
+22,Service was fast and efficient.,5,2024-09-10,Delivery,POSITIVE
+7,Excellent quality and worth the price.,4,2024-09-25,Product,POSITIVE
+20,Customer service was not accommodating.,1,2024-09-12,Support,NEGATIVE
+33,Support was very responsive and friendly.,4,2024-08-30,Support,POSITIVE
+17,Unfriendly and unhelpful support.,1,2024-09-15,Support,NEGATIVE
+6,Friendly and professional staff.,5,2024-09-26,Support,POSITIVE
+41,"Low-quality product, not happy.",2,2024-08-22,Product,NEGATIVE
+1,"Great experience, very satisfied with the service!",5,2024-10-01,Delivery,POSITIVE
+22,Service was slow and inefficient.,1,2024-09-10,Delivery,NEGATIVE
+40,Satisfied with the quick delivery.,5,2024-08-23,Delivery,POSITIVE
+41,Product is of excellent quality.,5,2024-08-22,Product,POSITIVE
+28,Order was delayed with no explanation.,1,2024-09-04,Delivery,NEGATIVE
+10,The product quality was disappointing.,2,2024-09-22,Product,NEGATIVE
+41,Product is of excellent quality.,5,2024-08-22,Product,POSITIVE
+11,"Helpful customer support, resolved my issue quickly.",4,2024-09-21,Support,POSITIVE
+18,Quick and reliable delivery.,5,2024-09-14,Delivery,POSITIVE
+44,The product quality exceeded expectations.,5,2024-08-19,Product,POSITIVE
+36,Friendly and efficient support.,4,2024-08-27,Support,POSITIVE
+3,Customer service was prompt and helpful.,5,2024-09-29,Support,POSITIVE
+43,Delivery was faster than expected.,5,2024-08-20,Delivery,POSITIVE
+24,Excellent customer service experience.,5,2024-09-08,Support,POSITIVE
+4,Loved the packaging and quality of the item!,5,2024-09-28,Product,POSITIVE
+37,Delivery was very late.,1,2024-08-26,Delivery,NEGATIVE
+21,"Overall, a bad experience.",1,2024-09-11,Delivery,NEGATIVE
+26,Disappointed with the product quality.,2,2024-09-06,Product,NEGATIVE
+38,Dissatisfied with the quality of the product.,2,2024-08-25,Product,NEGATIVE
+35,Product arrived in terrible condition.,2,2024-08-28,Product,NEGATIVE
+6,Friendly and professional staff.,5,2024-09-26,Support,POSITIVE
+45,Unfriendly and unhelpful support team.,1,2024-08-18,Support,NEGATIVE
+6,Friendly and professional staff.,5,2024-09-26,Support,POSITIVE
+24,Had a terrible customer service experience.,1,2024-09-08,Support,NEGATIVE
+3,Customer service was unresponsive.,1,2024-09-29,Support,NEGATIVE
+13,Product quality is amazing!,5,2024-09-19,Product,POSITIVE
+18,Quick and reliable delivery.,5,2024-09-14,Delivery,POSITIVE
+35,Excellent quality and fast shipping.,5,2024-08-28,Product,POSITIVE
+36,Friendly and efficient support.,4,2024-08-27,Support,POSITIVE
+11,"Helpful customer support, resolved my issue quickly.",4,2024-09-21,Support,POSITIVE
+48,Rude customer service.,1,2024-08-15,Support,NEGATIVE
+20,Customer service was not accommodating.,1,2024-09-12,Support,NEGATIVE
+49,Delivery was smooth and fast.,5,2024-08-14,Delivery,POSITIVE
+1,"Very disappointed with the service, took too long.",1,2024-10-01,Delivery,NEGATIVE
+34,Efficient and reliable service.,5,2024-08-29,Delivery,POSITIVE
+13,Product quality is amazing!,5,2024-09-19,Product,POSITIVE
+24,Had a terrible customer service experience.,1,2024-09-08,Support,NEGATIVE
+31,"Delivered on time, very satisfied.",5,2024-09-01,Delivery,POSITIVE
+22,Service was slow and inefficient.,1,2024-09-10,Delivery,NEGATIVE
+1,"Great experience, very satisfied with the service!",5,2024-10-01,Delivery,POSITIVE
+35,Product arrived in terrible condition.,2,2024-08-28,Product,NEGATIVE
+40,Satisfied with the quick delivery.,5,2024-08-23,Delivery,POSITIVE
+33,Support was very responsive and friendly.,4,2024-08-30,Support,POSITIVE
+6,"Rude customer support, not helpful at all.",1,2024-09-26,Support,NEGATIVE
+18,Quick and reliable delivery.,5,2024-09-14,Delivery,POSITIVE
+5,"Delivery was late, very inconvenient.",1,2024-09-27,Delivery,NEGATIVE
+39,Prompt and professional customer service.,4,2024-08-24,Support,POSITIVE
+43,Delivery was faster than expected.,5,2024-08-20,Delivery,POSITIVE
+35,Excellent quality and fast shipping.,5,2024-08-28,Product,POSITIVE
+37,Package arrived early and intact.,5,2024-08-26,Delivery,POSITIVE
+37,Package arrived early and intact.,5,2024-08-26,Delivery,POSITIVE
+5,"Very smooth transaction, will buy again.",4,2024-09-27,Delivery,POSITIVE
+30,Customer support was rude.,1,2024-09-02,Support,NEGATIVE
+31,Delivery was extremely late.,1,2024-09-01,Delivery,NEGATIVE
+23,Product arrived in poor condition.,2,2024-09-09,Product,NEGATIVE
+42,Customer support was rude and dismissive.,1,2024-08-21,Support,NEGATIVE
+1,"Great experience, very satisfied with the service!",5,2024-10-01,Delivery,POSITIVE
+15,"Late delivery, poor service.",1,2024-09-17,Delivery,NEGATIVE
+4,Loved the packaging and quality of the item!,5,2024-09-28,Product,POSITIVE
+36,Friendly and efficient support.,4,2024-08-27,Support,POSITIVE
+19,Product failed to meet expectations.,2,2024-09-13,Product,NEGATIVE
+28,"Fast delivery, no issues with the order.",4,2024-09-04,Delivery,POSITIVE
+12,Very satisfied with the fast delivery.,5,2024-09-20,Delivery,POSITIVE
+33,Support was very responsive and friendly.,4,2024-08-30,Support,POSITIVE
+37,Delivery was very late.,1,2024-08-26,Delivery,NEGATIVE
+42,Helpful and friendly support team.,4,2024-08-21,Support,POSITIVE
+50,"Product is perfect, no complaints!",5,2024-08-13,Product,POSITIVE
+16,Very pleased with the product quality.,4,2024-09-16,Product,POSITIVE
+32,The product is top-notch!,5,2024-08-31,Product,POSITIVE
+3,Customer service was unresponsive.,1,2024-09-29,Support,NEGATIVE
+39,Customer service was rude and slow.,1,2024-08-24,Support,NEGATIVE
+10,Item exceeded expectations.,5,2024-09-22,Product,POSITIVE
+44,The product quality exceeded expectations.,5,2024-08-19,Product,POSITIVE
+35,Excellent quality and fast shipping.,5,2024-08-28,Product,POSITIVE
+8,Slow response time from customer support.,1,2024-09-24,Support,NEGATIVE
+38,Happy with the quality of the product.,5,2024-08-25,Product,POSITIVE
+50,Product did not meet quality expectations.,2,2024-08-13,Product,NEGATIVE
+45,"Great support, very accommodating.",4,2024-08-18,Support,POSITIVE
+14,Very polite and helpful staff.,4,2024-09-18,Support,POSITIVE
+19,Product met all my expectations.,4,2024-09-13,Product,POSITIVE
+31,Delivery was extremely late.,1,2024-09-01,Delivery,NEGATIVE
+40,Delivery was not timely.,1,2024-08-23,Delivery,NEGATIVE
+36,Friendly and efficient support.,4,2024-08-27,Support,POSITIVE
+17,Great support and friendly team.,5,2024-09-15,Support,POSITIVE
+40,Delivery was not timely.,1,2024-08-23,Delivery,NEGATIVE
+1,"Great experience, very satisfied with the service!",5,2024-10-01,Delivery,POSITIVE
+23,"High-quality product, well-packaged.",4,2024-09-09,Product,POSITIVE
+10,The product quality was disappointing.,2,2024-09-22,Product,NEGATIVE
+45,Unfriendly and unhelpful support team.,1,2024-08-18,Support,NEGATIVE
+38,Happy with the quality of the product.,5,2024-08-25,Product,POSITIVE
+12,Very satisfied with the fast delivery.,5,2024-09-20,Delivery,POSITIVE
+8,Quick response time and thorough support.,5,2024-09-24,Support,POSITIVE
+29,High-quality product as advertised.,5,2024-09-03,Product,POSITIVE
+2,Product was damaged when it arrived.,2,2024-09-30,Product,NEGATIVE
+15,"Late delivery, poor service.",1,2024-09-17,Delivery,NEGATIVE
+23,"High-quality product, well-packaged.",4,2024-09-09,Product,POSITIVE
+43,Delivery was faster than expected.,5,2024-08-20,Delivery,POSITIVE
+29,High-quality product as advertised.,5,2024-09-03,Product,POSITIVE
+48,Rude customer service.,1,2024-08-15,Support,NEGATIVE
+22,Service was fast and efficient.,5,2024-09-10,Delivery,POSITIVE
+42,Helpful and friendly support team.,4,2024-08-21,Support,POSITIVE
+13,Product quality is amazing!,5,2024-09-19,Product,POSITIVE
+13,"Low-quality product, not satisfied.",2,2024-09-19,Product,NEGATIVE
+48,Very friendly customer service.,4,2024-08-15,Support,POSITIVE
+35,Excellent quality and fast shipping.,5,2024-08-28,Product,POSITIVE
+9,Would not recommend this service.,1,2024-09-23,Delivery,NEGATIVE
+11,"Helpful customer support, resolved my issue quickly.",4,2024-09-21,Support,POSITIVE
+23,"High-quality product, well-packaged.",4,2024-09-09,Product,POSITIVE
+50,"Product is perfect, no complaints!",5,2024-08-13,Product,POSITIVE
+46,"Late delivery, poorly managed.",1,2024-08-17,Delivery,NEGATIVE
+5,"Delivery was late, very inconvenient.",1,2024-09-27,Delivery,NEGATIVE
+40,Delivery was not timely.,1,2024-08-23,Delivery,NEGATIVE
+19,Product failed to meet expectations.,2,2024-09-13,Product,NEGATIVE
+14,Very polite and helpful staff.,4,2024-09-18,Support,POSITIVE
+4,"Poor quality, not worth the price.",2,2024-09-28,Product,NEGATIVE
+31,"Delivered on time, very satisfied.",5,2024-09-01,Delivery,POSITIVE
+30,Customer support was rude.,1,2024-09-02,Support,NEGATIVE
+21,Good experience overall.,4,2024-09-11,Delivery,POSITIVE
+20,Customer service was not accommodating.,1,2024-09-12,Support,NEGATIVE
+47,Poor quality product and service.,2,2024-08-16,Product,NEGATIVE
+26,Disappointed with the product quality.,2,2024-09-06,Product,NEGATIVE
+46,Quick delivery and well-packaged.,5,2024-08-17,Delivery,POSITIVE
+49,Delivery was smooth and fast.,5,2024-08-14,Delivery,POSITIVE
+45,"Great support, very accommodating.",4,2024-08-18,Support,POSITIVE
+46,Quick delivery and well-packaged.,5,2024-08-17,Delivery,POSITIVE
+46,"Late delivery, poorly managed.",1,2024-08-17,Delivery,NEGATIVE
+5,"Delivery was late, very inconvenient.",1,2024-09-27,Delivery,NEGATIVE
+34,Inefficient and unreliable service.,1,2024-08-29,Delivery,NEGATIVE
+14,Very polite and helpful staff.,4,2024-09-18,Support,POSITIVE
+10,The product quality was disappointing.,2,2024-09-22,Product,NEGATIVE
+36,Friendly and efficient support.,4,2024-08-27,Support,POSITIVE
+29,Product quality was not as advertised.,2,2024-09-03,Product,NEGATIVE
+13,Product quality is amazing!,5,2024-09-19,Product,POSITIVE
+9,Highly recommend this service!,5,2024-09-23,Delivery,POSITIVE
+41,"Low-quality product, not happy.",2,2024-08-22,Product,NEGATIVE
+48,Rude customer service.,1,2024-08-15,Support,NEGATIVE
+39,Customer service was rude and slow.,1,2024-08-24,Support,NEGATIVE
+37,Package arrived early and intact.,5,2024-08-26,Delivery,POSITIVE
+27,Customer support was very accommodating.,5,2024-09-05,Support,POSITIVE
+50,"Product is perfect, no complaints!",5,2024-08-13,Product,POSITIVE
+5,"Very smooth transaction, will buy again.",4,2024-09-27,Delivery,POSITIVE
+27,Customer support was very accommodating.,5,2024-09-05,Support,POSITIVE
+15,"Delivered on time, great service!",5,2024-09-17,Delivery,POSITIVE
+7,Excellent quality and worth the price.,4,2024-09-25,Product,POSITIVE
+14,Very polite and helpful staff.,4,2024-09-18,Support,POSITIVE
+3,Customer service was prompt and helpful.,5,2024-09-29,Support,POSITIVE
+29,Product quality was not as advertised.,2,2024-09-03,Product,NEGATIVE
+49,Delivery was smooth and fast.,5,2024-08-14,Delivery,POSITIVE
+26,"Happy with the purchase, worth the price.",5,2024-09-06,Product,POSITIVE
+35,Excellent quality and fast shipping.,5,2024-08-28,Product,POSITIVE
+45,Unfriendly and unhelpful support team.,1,2024-08-18,Support,NEGATIVE
+8,Quick response time and thorough support.,5,2024-09-24,Support,POSITIVE
+40,Satisfied with the quick delivery.,5,2024-08-23,Delivery,POSITIVE
+26,"Happy with the purchase, worth the price.",5,2024-09-06,Product,POSITIVE
+36,Friendly and efficient support.,4,2024-08-27,Support,POSITIVE
+21,"Overall, a bad experience.",1,2024-09-11,Delivery,NEGATIVE
+40,Delivery was not timely.,1,2024-08-23,Delivery,NEGATIVE
+5,"Delivery was late, very inconvenient.",1,2024-09-27,Delivery,NEGATIVE
+14,Very polite and helpful staff.,4,2024-09-18,Support,POSITIVE
+47,Poor quality product and service.,2,2024-08-16,Product,NEGATIVE
+47,Good quality product and service.,5,2024-08-16,Product,POSITIVE
+14,Support team was not polite or helpful.,1,2024-09-18,Support,NEGATIVE
+11,Customer support did not resolve my issue.,1,2024-09-21,Support,NEGATIVE
+44,Product quality was disappointing.,2,2024-08-19,Product,NEGATIVE
+4,"Poor quality, not worth the price.",2,2024-09-28,Product,NEGATIVE
+38,Dissatisfied with the quality of the product.,2,2024-08-25,Product,NEGATIVE
+45,"Great support, very accommodating.",4,2024-08-18,Support,POSITIVE
+28,"Fast delivery, no issues with the order.",4,2024-09-04,Delivery,POSITIVE
+8,Quick response time and thorough support.,5,2024-09-24,Support,POSITIVE
+14,Very polite and helpful staff.,4,2024-09-18,Support,POSITIVE
+43,Delivery arrived way too late.,1,2024-08-20,Delivery,NEGATIVE
+48,Very friendly customer service.,4,2024-08-15,Support,POSITIVE
+7,Product did not meet my expectations.,2,2024-09-25,Product,NEGATIVE
+19,Product met all my expectations.,4,2024-09-13,Product,POSITIVE
+5,"Very smooth transaction, will buy again.",4,2024-09-27,Delivery,POSITIVE
+15,"Delivered on time, great service!",5,2024-09-17,Delivery,POSITIVE
+16,Product quality was subpar.,2,2024-09-16,Product,NEGATIVE
+39,Prompt and professional customer service.,4,2024-08-24,Support,POSITIVE
+11,"Helpful customer support, resolved my issue quickly.",4,2024-09-21,Support,POSITIVE
+20,"Friendly customer service, very satisfied.",5,2024-09-12,Support,POSITIVE
+18,Quick and reliable delivery.,5,2024-09-14,Delivery,POSITIVE
+6,Friendly and professional staff.,5,2024-09-26,Support,POSITIVE
+43,Delivery was faster than expected.,5,2024-08-20,Delivery,POSITIVE
+7,Excellent quality and worth the price.,4,2024-09-25,Product,POSITIVE
+34,Efficient and reliable service.,5,2024-08-29,Delivery,POSITIVE
+45,Unfriendly and unhelpful support team.,1,2024-08-18,Support,NEGATIVE
+18,Delivery service was unreliable.,1,2024-09-14,Delivery,NEGATIVE
+35,Product arrived in terrible condition.,2,2024-08-28,Product,NEGATIVE
+8,Quick response time and thorough support.,5,2024-09-24,Support,POSITIVE
+26,Disappointed with the product quality.,2,2024-09-06,Product,NEGATIVE
+15,"Late delivery, poor service.",1,2024-09-17,Delivery,NEGATIVE
+15,"Delivered on time, great service!",5,2024-09-17,Delivery,POSITIVE
+28,"Fast delivery, no issues with the order.",4,2024-09-04,Delivery,POSITIVE
+35,Product arrived in terrible condition.,2,2024-08-28,Product,NEGATIVE
+16,Product quality was subpar.,2,2024-09-16,Product,NEGATIVE
+42,Helpful and friendly support team.,4,2024-08-21,Support,POSITIVE
+23,"High-quality product, well-packaged.",4,2024-09-09,Product,POSITIVE
+5,"Very smooth transaction, will buy again.",4,2024-09-27,Delivery,POSITIVE
+50,Product did not meet quality expectations.,2,2024-08-13,Product,NEGATIVE
+50,Product did not meet quality expectations.,2,2024-08-13,Product,NEGATIVE
+45,"Great support, very accommodating.",4,2024-08-18,Support,POSITIVE
+33,Support was unresponsive and unhelpful.,1,2024-08-30,Support,NEGATIVE
+46,Quick delivery and well-packaged.,5,2024-08-17,Delivery,POSITIVE
+8,Slow response time from customer support.,1,2024-09-24,Support,NEGATIVE
+12,Delivery took much longer than expected.,1,2024-09-20,Delivery,NEGATIVE
+5,"Delivery was late, very inconvenient.",1,2024-09-27,Delivery,NEGATIVE
+2,Product was damaged when it arrived.,2,2024-09-30,Product,NEGATIVE
+21,"Overall, a bad experience.",1,2024-09-11,Delivery,NEGATIVE
+3,Customer service was prompt and helpful.,5,2024-09-29,Support,POSITIVE
+42,Helpful and friendly support team.,4,2024-08-21,Support,POSITIVE
+36,Support team was rude and unhelpful.,1,2024-08-27,Support,NEGATIVE
+33,Support was very responsive and friendly.,4,2024-08-30,Support,POSITIVE
+15,"Delivered on time, great service!",5,2024-09-17,Delivery,POSITIVE
+5,"Very smooth transaction, will buy again.",4,2024-09-27,Delivery,POSITIVE
+5,"Delivery was late, very inconvenient.",1,2024-09-27,Delivery,NEGATIVE
+37,Package arrived early and intact.,5,2024-08-26,Delivery,POSITIVE
+16,Very pleased with the product quality.,4,2024-09-16,Product,POSITIVE
+37,Package arrived early and intact.,5,2024-08-26,Delivery,POSITIVE
+32,Poor quality product.,2,2024-08-31,Product,NEGATIVE
+3,Customer service was unresponsive.,1,2024-09-29,Support,NEGATIVE
+23,Product arrived in poor condition.,2,2024-09-09,Product,NEGATIVE
+30,Polite and helpful customer support.,4,2024-09-02,Support,POSITIVE
+31,"Delivered on time, very satisfied.",5,2024-09-01,Delivery,POSITIVE
+10,Item exceeded expectations.,5,2024-09-22,Product,POSITIVE
+42,Helpful and friendly support team.,4,2024-08-21,Support,POSITIVE
+33,Support was very responsive and friendly.,4,2024-08-30,Support,POSITIVE
+48,Rude customer service.,1,2024-08-15,Support,NEGATIVE
+1,"Very disappointed with the service, took too long.",1,2024-10-01,Delivery,NEGATIVE
+21,"Overall, a bad experience.",1,2024-09-11,Delivery,NEGATIVE
+49,Delivery was very delayed.,1,2024-08-14,Delivery,NEGATIVE
+45,"Great support, very accommodating.",4,2024-08-18,Support,POSITIVE
+15,"Delivered on time, great service!",5,2024-09-17,Delivery,POSITIVE
+2,Product was damaged when it arrived.,2,2024-09-30,Product,NEGATIVE
+10,Item exceeded expectations.,5,2024-09-22,Product,POSITIVE
+4,"Poor quality, not worth the price.",2,2024-09-28,Product,NEGATIVE
+39,Prompt and professional customer service.,4,2024-08-24,Support,POSITIVE
+19,Product met all my expectations.,4,2024-09-13,Product,POSITIVE
+14,Very polite and helpful staff.,4,2024-09-18,Support,POSITIVE
+45,Unfriendly and unhelpful support team.,1,2024-08-18,Support,NEGATIVE
+1,"Very disappointed with the service, took too long.",1,2024-10-01,Delivery,NEGATIVE
+47,Good quality product and service.,5,2024-08-16,Product,POSITIVE
+32,Poor quality product.,2,2024-08-31,Product,NEGATIVE
+5,"Delivery was late, very inconvenient.",1,2024-09-27,Delivery,NEGATIVE
+49,Delivery was very delayed.,1,2024-08-14,Delivery,NEGATIVE
+26,Disappointed with the product quality.,2,2024-09-06,Product,NEGATIVE
+13,"Low-quality product, not satisfied.",2,2024-09-19,Product,NEGATIVE
+50,"Product is perfect, no complaints!",5,2024-08-13,Product,POSITIVE
+47,Good quality product and service.,5,2024-08-16,Product,POSITIVE
+26,"Happy with the purchase, worth the price.",5,2024-09-06,Product,POSITIVE
+7,Excellent quality and worth the price.,4,2024-09-25,Product,POSITIVE
+43,Delivery was faster than expected.,5,2024-08-20,Delivery,POSITIVE
+20,"Friendly customer service, very satisfied.",5,2024-09-12,Support,POSITIVE
+29,High-quality product as advertised.,5,2024-09-03,Product,POSITIVE
+2,Product was damaged when it arrived.,2,2024-09-30,Product,NEGATIVE
+6,Friendly and professional staff.,5,2024-09-26,Support,POSITIVE
+26,Disappointed with the product quality.,2,2024-09-06,Product,NEGATIVE
+17,Unfriendly and unhelpful support.,1,2024-09-15,Support,NEGATIVE
+34,Inefficient and unreliable service.,1,2024-08-29,Delivery,NEGATIVE
+31,"Delivered on time, very satisfied.",5,2024-09-01,Delivery,POSITIVE
+31,Delivery was extremely late.,1,2024-09-01,Delivery,NEGATIVE
+3,Customer service was prompt and helpful.,5,2024-09-29,Support,POSITIVE
+20,Customer service was not accommodating.,1,2024-09-12,Support,NEGATIVE
+35,Excellent quality and fast shipping.,5,2024-08-28,Product,POSITIVE
+1,"Very disappointed with the service, took too long.",1,2024-10-01,Delivery,NEGATIVE
+27,Customer support was very accommodating.,5,2024-09-05,Support,POSITIVE
+35,Excellent quality and fast shipping.,5,2024-08-28,Product,POSITIVE
+17,Great support and friendly team.,5,2024-09-15,Support,POSITIVE
+1,"Great experience, very satisfied with the service!",5,2024-10-01,Delivery,POSITIVE
+16,Very pleased with the product quality.,4,2024-09-16,Product,POSITIVE
+39,Customer service was rude and slow.,1,2024-08-24,Support,NEGATIVE
+49,Delivery was smooth and fast.,5,2024-08-14,Delivery,POSITIVE
+45,Unfriendly and unhelpful support team.,1,2024-08-18,Support,NEGATIVE
+41,"Low-quality product, not happy.",2,2024-08-22,Product,NEGATIVE
+27,Customer support was very accommodating.,5,2024-09-05,Support,POSITIVE
+25,Very prompt delivery and great packaging.,4,2024-09-07,Delivery,POSITIVE
+49,Delivery was very delayed.,1,2024-08-14,Delivery,NEGATIVE
+42,Helpful and friendly support team.,4,2024-08-21,Support,POSITIVE
+38,Dissatisfied with the quality of the product.,2,2024-08-25,Product,NEGATIVE
+16,Product quality was subpar.,2,2024-09-16,Product,NEGATIVE
+42,Helpful and friendly support team.,4,2024-08-21,Support,POSITIVE
+12,Delivery took much longer than expected.,1,2024-09-20,Delivery,NEGATIVE
+29,Product quality was not as advertised.,2,2024-09-03,Product,NEGATIVE
+41,Product is of excellent quality.,5,2024-08-22,Product,POSITIVE
+35,Excellent quality and fast shipping.,5,2024-08-28,Product,POSITIVE
+49,Delivery was very delayed.,1,2024-08-14,Delivery,NEGATIVE
+50,Product did not meet quality expectations.,2,2024-08-13,Product,NEGATIVE
+25,Very prompt delivery and great packaging.,4,2024-09-07,Delivery,POSITIVE
+7,Excellent quality and worth the price.,4,2024-09-25,Product,POSITIVE
+15,"Delivered on time, great service!",5,2024-09-17,Delivery,POSITIVE
+28,Order was delayed with no explanation.,1,2024-09-04,Delivery,NEGATIVE
+24,Had a terrible customer service experience.,1,2024-09-08,Support,NEGATIVE
+49,Delivery was very delayed.,1,2024-08-14,Delivery,NEGATIVE
+23,Product arrived in poor condition.,2,2024-09-09,Product,NEGATIVE
+14,Support team was not polite or helpful.,1,2024-09-18,Support,NEGATIVE
+5,"Delivery was late, very inconvenient.",1,2024-09-27,Delivery,NEGATIVE
+36,Support team was rude and unhelpful.,1,2024-08-27,Support,NEGATIVE
+43,Delivery was faster than expected.,5,2024-08-20,Delivery,POSITIVE
+37,Delivery was very late.,1,2024-08-26,Delivery,NEGATIVE
+44,The product quality exceeded expectations.,5,2024-08-19,Product,POSITIVE
+48,Very friendly customer service.,4,2024-08-15,Support,POSITIVE
+32,The product is top-notch!,5,2024-08-31,Product,POSITIVE
+11,Customer support did not resolve my issue.,1,2024-09-21,Support,NEGATIVE
+9,Highly recommend this service!,5,2024-09-23,Delivery,POSITIVE
+10,The product quality was disappointing.,2,2024-09-22,Product,NEGATIVE
+22,Service was fast and efficient.,5,2024-09-10,Delivery,POSITIVE
+19,Product failed to meet expectations.,2,2024-09-13,Product,NEGATIVE
+33,Support was very responsive and friendly.,4,2024-08-30,Support,POSITIVE
+46,Quick delivery and well-packaged.,5,2024-08-17,Delivery,POSITIVE
+29,High-quality product as advertised.,5,2024-09-03,Product,POSITIVE
+1,"Great experience, very satisfied with the service!",5,2024-10-01,Delivery,POSITIVE
+17,Great support and friendly team.,5,2024-09-15,Support,POSITIVE
+28,Order was delayed with no explanation.,1,2024-09-04,Delivery,NEGATIVE
+7,Excellent quality and worth the price.,4,2024-09-25,Product,POSITIVE
+47,Good quality product and service.,5,2024-08-16,Product,POSITIVE
+15,"Delivered on time, great service!",5,2024-09-17,Delivery,POSITIVE
+29,High-quality product as advertised.,5,2024-09-03,Product,POSITIVE
+25,Very prompt delivery and great packaging.,4,2024-09-07,Delivery,POSITIVE
+30,Polite and helpful customer support.,4,2024-09-02,Support,POSITIVE
+48,Very friendly customer service.,4,2024-08-15,Support,POSITIVE
+29,High-quality product as advertised.,5,2024-09-03,Product,POSITIVE
+5,"Delivery was late, very inconvenient.",1,2024-09-27,Delivery,NEGATIVE
+17,Great support and friendly team.,5,2024-09-15,Support,POSITIVE
+22,Service was fast and efficient.,5,2024-09-10,Delivery,POSITIVE
+23,"High-quality product, well-packaged.",4,2024-09-09,Product,POSITIVE
+20,Customer service was not accommodating.,1,2024-09-12,Support,NEGATIVE
+23,"High-quality product, well-packaged.",4,2024-09-09,Product,POSITIVE
+44,Product quality was disappointing.,2,2024-08-19,Product,NEGATIVE
+48,Rude customer service.,1,2024-08-15,Support,NEGATIVE
+39,Prompt and professional customer service.,4,2024-08-24,Support,POSITIVE
+44,The product quality exceeded expectations.,5,2024-08-19,Product,POSITIVE
+2,Product arrived on time and as described.,4,2024-09-30,Product,POSITIVE
+13,Product quality is amazing!,5,2024-09-19,Product,POSITIVE
+27,Customer support was uncooperative.,1,2024-09-05,Support,NEGATIVE
+44,The product quality exceeded expectations.,5,2024-08-19,Product,POSITIVE
+5,"Very smooth transaction, will buy again.",4,2024-09-27,Delivery,POSITIVE
+48,Very friendly customer service.,4,2024-08-15,Support,POSITIVE
+25,"Delivery was delayed, poor communication.",1,2024-09-07,Delivery,NEGATIVE
+4,"Poor quality, not worth the price.",2,2024-09-28,Product,NEGATIVE
+31,"Delivered on time, very satisfied.",5,2024-09-01,Delivery,POSITIVE
+39,Customer service was rude and slow.,1,2024-08-24,Support,NEGATIVE
+19,Product met all my expectations.,4,2024-09-13,Product,POSITIVE
+47,Good quality product and service.,5,2024-08-16,Product,POSITIVE
+17,Great support and friendly team.,5,2024-09-15,Support,POSITIVE
+3,Customer service was prompt and helpful.,5,2024-09-29,Support,POSITIVE
+33,Support was very responsive and friendly.,4,2024-08-30,Support,POSITIVE
+1,"Very disappointed with the service, took too long.",1,2024-10-01,Delivery,NEGATIVE
+19,Product failed to meet expectations.,2,2024-09-13,Product,NEGATIVE
+15,"Delivered on time, great service!",5,2024-09-17,Delivery,POSITIVE
+49,Delivery was very delayed.,1,2024-08-14,Delivery,NEGATIVE
+31,"Delivered on time, very satisfied.",5,2024-09-01,Delivery,POSITIVE
+26,Disappointed with the product quality.,2,2024-09-06,Product,NEGATIVE
+33,Support was unresponsive and unhelpful.,1,2024-08-30,Support,NEGATIVE
+48,Very friendly customer service.,4,2024-08-15,Support,POSITIVE
+49,Delivery was very delayed.,1,2024-08-14,Delivery,NEGATIVE
+23,"High-quality product, well-packaged.",4,2024-09-09,Product,POSITIVE
+37,Delivery was very late.,1,2024-08-26,Delivery,NEGATIVE
+30,Polite and helpful customer support.,4,2024-09-02,Support,POSITIVE
+12,Very satisfied with the fast delivery.,5,2024-09-20,Delivery,POSITIVE
+4,Loved the packaging and quality of the item!,5,2024-09-28,Product,POSITIVE
+2,Product was damaged when it arrived.,2,2024-09-30,Product,NEGATIVE
+28,Order was delayed with no explanation.,1,2024-09-04,Delivery,NEGATIVE
+35,Product arrived in terrible condition.,2,2024-08-28,Product,NEGATIVE
+26,Disappointed with the product quality.,2,2024-09-06,Product,NEGATIVE
+35,Product arrived in terrible condition.,2,2024-08-28,Product,NEGATIVE
+26,Disappointed with the product quality.,2,2024-09-06,Product,NEGATIVE
+7,Excellent quality and worth the price.,4,2024-09-25,Product,POSITIVE
+38,Happy with the quality of the product.,5,2024-08-25,Product,POSITIVE
+38,Happy with the quality of the product.,5,2024-08-25,Product,POSITIVE
+6,Friendly and professional staff.,5,2024-09-26,Support,POSITIVE
+43,Delivery was faster than expected.,5,2024-08-20,Delivery,POSITIVE
+29,High-quality product as advertised.,5,2024-09-03,Product,POSITIVE
+4,"Poor quality, not worth the price.",2,2024-09-28,Product,NEGATIVE
+2,Product was damaged when it arrived.,2,2024-09-30,Product,NEGATIVE
+43,Delivery arrived way too late.,1,2024-08-20,Delivery,NEGATIVE
+38,Dissatisfied with the quality of the product.,2,2024-08-25,Product,NEGATIVE
+6,"Rude customer support, not helpful at all.",1,2024-09-26,Support,NEGATIVE
+36,Support team was rude and unhelpful.,1,2024-08-27,Support,NEGATIVE
+49,Delivery was smooth and fast.,5,2024-08-14,Delivery,POSITIVE
+36,Friendly and efficient support.,4,2024-08-27,Support,POSITIVE
+14,Very polite and helpful staff.,4,2024-09-18,Support,POSITIVE
+32,The product is top-notch!,5,2024-08-31,Product,POSITIVE
+17,Unfriendly and unhelpful support.,1,2024-09-15,Support,NEGATIVE
+30,Polite and helpful customer support.,4,2024-09-02,Support,POSITIVE
+27,Customer support was very accommodating.,5,2024-09-05,Support,POSITIVE
+1,"Great experience, very satisfied with the service!",5,2024-10-01,Delivery,POSITIVE
+31,"Delivered on time, very satisfied.",5,2024-09-01,Delivery,POSITIVE
+14,Very polite and helpful staff.,4,2024-09-18,Support,POSITIVE
+30,Polite and helpful customer support.,4,2024-09-02,Support,POSITIVE
+25,Very prompt delivery and great packaging.,4,2024-09-07,Delivery,POSITIVE
+41,Product is of excellent quality.,5,2024-08-22,Product,POSITIVE
+31,"Delivered on time, very satisfied.",5,2024-09-01,Delivery,POSITIVE
+29,High-quality product as advertised.,5,2024-09-03,Product,POSITIVE
+40,Delivery was not timely.,1,2024-08-23,Delivery,NEGATIVE
+33,Support was unresponsive and unhelpful.,1,2024-08-30,Support,NEGATIVE
+25,Very prompt delivery and great packaging.,4,2024-09-07,Delivery,POSITIVE
+48,Very friendly customer service.,4,2024-08-15,Support,POSITIVE
+45,Unfriendly and unhelpful support team.,1,2024-08-18,Support,NEGATIVE
+43,Delivery was faster than expected.,5,2024-08-20,Delivery,POSITIVE
+38,Happy with the quality of the product.,5,2024-08-25,Product,POSITIVE
+48,Very friendly customer service.,4,2024-08-15,Support,POSITIVE
+42,Customer support was rude and dismissive.,1,2024-08-21,Support,NEGATIVE
+46,"Late delivery, poorly managed.",1,2024-08-17,Delivery,NEGATIVE
+3,Customer service was prompt and helpful.,5,2024-09-29,Support,POSITIVE
+34,Efficient and reliable service.,5,2024-08-29,Delivery,POSITIVE
+18,Quick and reliable delivery.,5,2024-09-14,Delivery,POSITIVE
+5,"Delivery was late, very inconvenient.",1,2024-09-27,Delivery,NEGATIVE
+29,Product quality was not as advertised.,2,2024-09-03,Product,NEGATIVE
+17,Great support and friendly team.,5,2024-09-15,Support,POSITIVE
+1,"Great experience, very satisfied with the service!",5,2024-10-01,Delivery,POSITIVE
+26,Disappointed with the product quality.,2,2024-09-06,Product,NEGATIVE
+30,Polite and helpful customer support.,4,2024-09-02,Support,POSITIVE
+2,Product was damaged when it arrived.,2,2024-09-30,Product,NEGATIVE
+9,Would not recommend this service.,1,2024-09-23,Delivery,NEGATIVE
+3,Customer service was unresponsive.,1,2024-09-29,Support,NEGATIVE
+18,Delivery service was unreliable.,1,2024-09-14,Delivery,NEGATIVE
+14,Very polite and helpful staff.,4,2024-09-18,Support,POSITIVE
+48,Very friendly customer service.,4,2024-08-15,Support,POSITIVE
+17,Unfriendly and unhelpful support.,1,2024-09-15,Support,NEGATIVE
+13,Product quality is amazing!,5,2024-09-19,Product,POSITIVE
+49,Delivery was smooth and fast.,5,2024-08-14,Delivery,POSITIVE
+42,Helpful and friendly support team.,4,2024-08-21,Support,POSITIVE
+36,Friendly and efficient support.,4,2024-08-27,Support,POSITIVE
+5,"Very smooth transaction, will buy again.",4,2024-09-27,Delivery,POSITIVE
+48,Rude customer service.,1,2024-08-15,Support,NEGATIVE
+8,Quick response time and thorough support.,5,2024-09-24,Support,POSITIVE
+3,Customer service was unresponsive.,1,2024-09-29,Support,NEGATIVE
+47,Good quality product and service.,5,2024-08-16,Product,POSITIVE
+22,Service was fast and efficient.,5,2024-09-10,Delivery,POSITIVE
+36,Friendly and efficient support.,4,2024-08-27,Support,POSITIVE
+46,Quick delivery and well-packaged.,5,2024-08-17,Delivery,POSITIVE
+15,"Delivered on time, great service!",5,2024-09-17,Delivery,POSITIVE
+46,"Late delivery, poorly managed.",1,2024-08-17,Delivery,NEGATIVE
+26,Disappointed with the product quality.,2,2024-09-06,Product,NEGATIVE
+31,"Delivered on time, very satisfied.",5,2024-09-01,Delivery,POSITIVE
+35,Excellent quality and fast shipping.,5,2024-08-28,Product,POSITIVE
+37,Package arrived early and intact.,5,2024-08-26,Delivery,POSITIVE
+46,Quick delivery and well-packaged.,5,2024-08-17,Delivery,POSITIVE
+10,The product quality was disappointing.,2,2024-09-22,Product,NEGATIVE
+42,Helpful and friendly support team.,4,2024-08-21,Support,POSITIVE
+44,Product quality was disappointing.,2,2024-08-19,Product,NEGATIVE
+35,Excellent quality and fast shipping.,5,2024-08-28,Product,POSITIVE
+41,Product is of excellent quality.,5,2024-08-22,Product,POSITIVE
+41,"Low-quality product, not happy.",2,2024-08-22,Product,NEGATIVE
+25,Very prompt delivery and great packaging.,4,2024-09-07,Delivery,POSITIVE
+49,Delivery was smooth and fast.,5,2024-08-14,Delivery,POSITIVE
+25,Very prompt delivery and great packaging.,4,2024-09-07,Delivery,POSITIVE
+16,Product quality was subpar.,2,2024-09-16,Product,NEGATIVE
+29,High-quality product as advertised.,5,2024-09-03,Product,POSITIVE
+20,"Friendly customer service, very satisfied.",5,2024-09-12,Support,POSITIVE
+35,Excellent quality and fast shipping.,5,2024-08-28,Product,POSITIVE
+8,Quick response time and thorough support.,5,2024-09-24,Support,POSITIVE
+50,"Product is perfect, no complaints!",5,2024-08-13,Product,POSITIVE
+14,Very polite and helpful staff.,4,2024-09-18,Support,POSITIVE
+16,Product quality was subpar.,2,2024-09-16,Product,NEGATIVE
+34,Inefficient and unreliable service.,1,2024-08-29,Delivery,NEGATIVE
+34,Efficient and reliable service.,5,2024-08-29,Delivery,POSITIVE
+17,Great support and friendly team.,5,2024-09-15,Support,POSITIVE
+2,Product arrived on time and as described.,4,2024-09-30,Product,POSITIVE
+27,Customer support was uncooperative.,1,2024-09-05,Support,NEGATIVE
+3,Customer service was unresponsive.,1,2024-09-29,Support,NEGATIVE
+15,"Delivered on time, great service!",5,2024-09-17,Delivery,POSITIVE
+42,Helpful and friendly support team.,4,2024-08-21,Support,POSITIVE
+43,Delivery was faster than expected.,5,2024-08-20,Delivery,POSITIVE
+17,Great support and friendly team.,5,2024-09-15,Support,POSITIVE
+41,Product is of excellent quality.,5,2024-08-22,Product,POSITIVE
+44,The product quality exceeded expectations.,5,2024-08-19,Product,POSITIVE
+26,Disappointed with the product quality.,2,2024-09-06,Product,NEGATIVE
+31,Delivery was extremely late.,1,2024-09-01,Delivery,NEGATIVE
+37,Package arrived early and intact.,5,2024-08-26,Delivery,POSITIVE
+20,"Friendly customer service, very satisfied.",5,2024-09-12,Support,POSITIVE
+19,Product failed to meet expectations.,2,2024-09-13,Product,NEGATIVE
+22,Service was slow and inefficient.,1,2024-09-10,Delivery,NEGATIVE
+46,"Late delivery, poorly managed.",1,2024-08-17,Delivery,NEGATIVE
+5,"Delivery was late, very inconvenient.",1,2024-09-27,Delivery,NEGATIVE
+32,Poor quality product.,2,2024-08-31,Product,NEGATIVE
+3,Customer service was unresponsive.,1,2024-09-29,Support,NEGATIVE
+11,Customer support did not resolve my issue.,1,2024-09-21,Support,NEGATIVE
+16,Product quality was subpar.,2,2024-09-16,Product,NEGATIVE
+31,"Delivered on time, very satisfied.",5,2024-09-01,Delivery,POSITIVE
+22,Service was fast and efficient.,5,2024-09-10,Delivery,POSITIVE
+46,"Late delivery, poorly managed.",1,2024-08-17,Delivery,NEGATIVE
+18,Quick and reliable delivery.,5,2024-09-14,Delivery,POSITIVE
+25,"Delivery was delayed, poor communication.",1,2024-09-07,Delivery,NEGATIVE
+23,"High-quality product, well-packaged.",4,2024-09-09,Product,POSITIVE
+48,Rude customer service.,1,2024-08-15,Support,NEGATIVE
+41,Product is of excellent quality.,5,2024-08-22,Product,POSITIVE
+2,Product arrived on time and as described.,4,2024-09-30,Product,POSITIVE
+31,"Delivered on time, very satisfied.",5,2024-09-01,Delivery,POSITIVE
+43,Delivery arrived way too late.,1,2024-08-20,Delivery,NEGATIVE
+19,Product met all my expectations.,4,2024-09-13,Product,POSITIVE
+41,Product is of excellent quality.,5,2024-08-22,Product,POSITIVE
+32,The product is top-notch!,5,2024-08-31,Product,POSITIVE
+46,Quick delivery and well-packaged.,5,2024-08-17,Delivery,POSITIVE
+29,High-quality product as advertised.,5,2024-09-03,Product,POSITIVE
+6,Friendly and professional staff.,5,2024-09-26,Support,POSITIVE
+39,Prompt and professional customer service.,4,2024-08-24,Support,POSITIVE
+40,Satisfied with the quick delivery.,5,2024-08-23,Delivery,POSITIVE
+39,Prompt and professional customer service.,4,2024-08-24,Support,POSITIVE
+4,Loved the packaging and quality of the item!,5,2024-09-28,Product,POSITIVE
+16,Product quality was subpar.,2,2024-09-16,Product,NEGATIVE
+25,Very prompt delivery and great packaging.,4,2024-09-07,Delivery,POSITIVE
+45,Unfriendly and unhelpful support team.,1,2024-08-18,Support,NEGATIVE
+50,Product did not meet quality expectations.,2,2024-08-13,Product,NEGATIVE
+22,Service was fast and efficient.,5,2024-09-10,Delivery,POSITIVE
+50,Product did not meet quality expectations.,2,2024-08-13,Product,NEGATIVE
+23,"High-quality product, well-packaged.",4,2024-09-09,Product,POSITIVE
+14,Very polite and helpful staff.,4,2024-09-18,Support,POSITIVE
+47,Good quality product and service.,5,2024-08-16,Product,POSITIVE
+2,Product arrived on time and as described.,4,2024-09-30,Product,POSITIVE
+24,Excellent customer service experience.,5,2024-09-08,Support,POSITIVE
+31,"Delivered on time, very satisfied.",5,2024-09-01,Delivery,POSITIVE
+30,Polite and helpful customer support.,4,2024-09-02,Support,POSITIVE
+8,Quick response time and thorough support.,5,2024-09-24,Support,POSITIVE
+9,Highly recommend this service!,5,2024-09-23,Delivery,POSITIVE
+26,Disappointed with the product quality.,2,2024-09-06,Product,NEGATIVE
+19,Product failed to meet expectations.,2,2024-09-13,Product,NEGATIVE
+44,Product quality was disappointing.,2,2024-08-19,Product,NEGATIVE
+9,Highly recommend this service!,5,2024-09-23,Delivery,POSITIVE
+35,Product arrived in terrible condition.,2,2024-08-28,Product,NEGATIVE
+7,Excellent quality and worth the price.,4,2024-09-25,Product,POSITIVE
+13,"Low-quality product, not satisfied.",2,2024-09-19,Product,NEGATIVE
+44,The product quality exceeded expectations.,5,2024-08-19,Product,POSITIVE
+39,Prompt and professional customer service.,4,2024-08-24,Support,POSITIVE
+30,Polite and helpful customer support.,4,2024-09-02,Support,POSITIVE
+8,Slow response time from customer support.,1,2024-09-24,Support,NEGATIVE
+43,Delivery arrived way too late.,1,2024-08-20,Delivery,NEGATIVE
+5,"Delivery was late, very inconvenient.",1,2024-09-27,Delivery,NEGATIVE
+10,The product quality was disappointing.,2,2024-09-22,Product,NEGATIVE
+5,"Delivery was late, very inconvenient.",1,2024-09-27,Delivery,NEGATIVE
+34,Efficient and reliable service.,5,2024-08-29,Delivery,POSITIVE
+34,Efficient and reliable service.,5,2024-08-29,Delivery,POSITIVE
+10,The product quality was disappointing.,2,2024-09-22,Product,NEGATIVE
+31,"Delivered on time, very satisfied.",5,2024-09-01,Delivery,POSITIVE
+6,Friendly and professional staff.,5,2024-09-26,Support,POSITIVE
+50,"Product is perfect, no complaints!",5,2024-08-13,Product,POSITIVE
+27,Customer support was very accommodating.,5,2024-09-05,Support,POSITIVE
+39,Prompt and professional customer service.,4,2024-08-24,Support,POSITIVE
+50,"Product is perfect, no complaints!",5,2024-08-13,Product,POSITIVE
+47,Good quality product and service.,5,2024-08-16,Product,POSITIVE
+42,Helpful and friendly support team.,4,2024-08-21,Support,POSITIVE
+28,"Fast delivery, no issues with the order.",4,2024-09-04,Delivery,POSITIVE
+18,Delivery service was unreliable.,1,2024-09-14,Delivery,NEGATIVE
+23,Product arrived in poor condition.,2,2024-09-09,Product,NEGATIVE
+46,"Late delivery, poorly managed.",1,2024-08-17,Delivery,NEGATIVE
+18,Quick and reliable delivery.,5,2024-09-14,Delivery,POSITIVE
+36,Friendly and efficient support.,4,2024-08-27,Support,POSITIVE
+7,Excellent quality and worth the price.,4,2024-09-25,Product,POSITIVE
+36,Friendly and efficient support.,4,2024-08-27,Support,POSITIVE
+37,Delivery was very late.,1,2024-08-26,Delivery,NEGATIVE
+32,The product is top-notch!,5,2024-08-31,Product,POSITIVE
+9,Highly recommend this service!,5,2024-09-23,Delivery,POSITIVE
+12,Very satisfied with the fast delivery.,5,2024-09-20,Delivery,POSITIVE
+6,Friendly and professional staff.,5,2024-09-26,Support,POSITIVE
+39,Prompt and professional customer service.,4,2024-08-24,Support,POSITIVE
+7,Product did not meet my expectations.,2,2024-09-25,Product,NEGATIVE
+23,"High-quality product, well-packaged.",4,2024-09-09,Product,POSITIVE
+25,Very prompt delivery and great packaging.,4,2024-09-07,Delivery,POSITIVE
+42,Customer support was rude and dismissive.,1,2024-08-21,Support,NEGATIVE
+50,"Product is perfect, no complaints!",5,2024-08-13,Product,POSITIVE
+50,Product did not meet quality expectations.,2,2024-08-13,Product,NEGATIVE
+33,Support was very responsive and friendly.,4,2024-08-30,Support,POSITIVE
+28,Order was delayed with no explanation.,1,2024-09-04,Delivery,NEGATIVE
+15,"Delivered on time, great service!",5,2024-09-17,Delivery,POSITIVE
+33,Support was unresponsive and unhelpful.,1,2024-08-30,Support,NEGATIVE
+38,Happy with the quality of the product.,5,2024-08-25,Product,POSITIVE
+13,"Low-quality product, not satisfied.",2,2024-09-19,Product,NEGATIVE
+11,"Helpful customer support, resolved my issue quickly.",4,2024-09-21,Support,POSITIVE
+16,Very pleased with the product quality.,4,2024-09-16,Product,POSITIVE
+17,Great support and friendly team.,5,2024-09-15,Support,POSITIVE
+41,"Low-quality product, not happy.",2,2024-08-22,Product,NEGATIVE
+37,Delivery was very late.,1,2024-08-26,Delivery,NEGATIVE
+14,Support team was not polite or helpful.,1,2024-09-18,Support,NEGATIVE
+39,Customer service was rude and slow.,1,2024-08-24,Support,NEGATIVE
+33,Support was unresponsive and unhelpful.,1,2024-08-30,Support,NEGATIVE
+26,Disappointed with the product quality.,2,2024-09-06,Product,NEGATIVE
+12,Delivery took much longer than expected.,1,2024-09-20,Delivery,NEGATIVE
+28,"Fast delivery, no issues with the order.",4,2024-09-04,Delivery,POSITIVE
+24,Had a terrible customer service experience.,1,2024-09-08,Support,NEGATIVE
+40,Satisfied with the quick delivery.,5,2024-08-23,Delivery,POSITIVE
+20,"Friendly customer service, very satisfied.",5,2024-09-12,Support,POSITIVE
+44,Product quality was disappointing.,2,2024-08-19,Product,NEGATIVE
+38,Happy with the quality of the product.,5,2024-08-25,Product,POSITIVE
+14,Very polite and helpful staff.,4,2024-09-18,Support,POSITIVE
+10,Item exceeded expectations.,5,2024-09-22,Product,POSITIVE
+7,Excellent quality and worth the price.,4,2024-09-25,Product,POSITIVE
+13,Product quality is amazing!,5,2024-09-19,Product,POSITIVE
+29,High-quality product as advertised.,5,2024-09-03,Product,POSITIVE
+34,Inefficient and unreliable service.,1,2024-08-29,Delivery,NEGATIVE
+30,Polite and helpful customer support.,4,2024-09-02,Support,POSITIVE
+10,The product quality was disappointing.,2,2024-09-22,Product,NEGATIVE
+42,Helpful and friendly support team.,4,2024-08-21,Support,POSITIVE
+35,Product arrived in terrible condition.,2,2024-08-28,Product,NEGATIVE
+3,Customer service was prompt and helpful.,5,2024-09-29,Support,POSITIVE
+29,High-quality product as advertised.,5,2024-09-03,Product,POSITIVE
+44,Product quality was disappointing.,2,2024-08-19,Product,NEGATIVE
+40,Satisfied with the quick delivery.,5,2024-08-23,Delivery,POSITIVE
+46,"Late delivery, poorly managed.",1,2024-08-17,Delivery,NEGATIVE
+4,Loved the packaging and quality of the item!,5,2024-09-28,Product,POSITIVE
+15,"Late delivery, poor service.",1,2024-09-17,Delivery,NEGATIVE
+7,Excellent quality and worth the price.,4,2024-09-25,Product,POSITIVE
+17,Great support and friendly team.,5,2024-09-15,Support,POSITIVE
+12,Very satisfied with the fast delivery.,5,2024-09-20,Delivery,POSITIVE
+31,"Delivered on time, very satisfied.",5,2024-09-01,Delivery,POSITIVE
+19,Product failed to meet expectations.,2,2024-09-13,Product,NEGATIVE
+36,Support team was rude and unhelpful.,1,2024-08-27,Support,NEGATIVE
+25,Very prompt delivery and great packaging.,4,2024-09-07,Delivery,POSITIVE
+7,Product did not meet my expectations.,2,2024-09-25,Product,NEGATIVE
+31,Delivery was extremely late.,1,2024-09-01,Delivery,NEGATIVE
+50,"Product is perfect, no complaints!",5,2024-08-13,Product,POSITIVE
+27,Customer support was very accommodating.,5,2024-09-05,Support,POSITIVE
+47,Good quality product and service.,5,2024-08-16,Product,POSITIVE
+49,Delivery was smooth and fast.,5,2024-08-14,Delivery,POSITIVE
+25,Very prompt delivery and great packaging.,4,2024-09-07,Delivery,POSITIVE
+31,"Delivered on time, very satisfied.",5,2024-09-01,Delivery,POSITIVE
+16,Product quality was subpar.,2,2024-09-16,Product,NEGATIVE
+31,Delivery was extremely late.,1,2024-09-01,Delivery,NEGATIVE
+35,Excellent quality and fast shipping.,5,2024-08-28,Product,POSITIVE
+50,"Product is perfect, no complaints!",5,2024-08-13,Product,POSITIVE
